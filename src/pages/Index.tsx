@@ -6,6 +6,7 @@ import FeaturedInsightsSection from "../components/sections/FeaturedInsightsSect
 import RecentBlogsSection from "../components/sections/RecentBlogsSection";
 import AIServiceSection from "../components/sections/AIServiceSection";
 import StaffAugmentationSection from "../components/sections/StaffAugmentationSection";
+import ConsultationSection from "../components/sections/ConsultationSection";
 import DevelopmentServiceSection from "../components/sections/DevelopmentServiceSection";
 import TechnologySection from "../components/sections/TechnologySection";
 import TestimonialsSection from "../components/sections/TestimonialsSection";
@@ -20,7 +21,8 @@ const Index = () => {
       <AboutSection />
       <ServiceCardsSection />
       {/* <AIServiceSection /> */}
-      {/* <StaffAugmentationSection /> */}
+      <ConsultationSection />
+      <StaffAugmentationSection />
       <DevelopmentServiceSection />
       <TestimonialsSection />
       <ContactSection />

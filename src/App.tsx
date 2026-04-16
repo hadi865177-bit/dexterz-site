@@ -17,6 +17,7 @@ import StaffAugmentation from "./pages/StaffAugmentation";
 import SoftwareDevelopment from "./pages/SoftwareDevelopment";
 import MobileDevelopment from "./pages/MobileDevelopment";
 import CloudSolutions from "./pages/CloudSolutions";
+import Consultation from "./pages/Consultation";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
 import Careers from "./pages/Careers";
@@ -48,6 +49,7 @@ const App = () => (
           <Route path="/services/development" element={<SoftwareDevelopment />} />
           <Route path="/services/mobile" element={<MobileDevelopment />} />
           <Route path="/services/cloud" element={<CloudSolutions />} />
+          <Route path="/services/consultation" element={<Consultation />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/careers" element={<Careers />} />

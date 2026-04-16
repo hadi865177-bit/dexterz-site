@@ -124,9 +124,9 @@ const ContactSection = () => {
                     <div>
                       <p className="text-brand-teal mb-1 font-medium">Email</p>
                       <a
-                        href="mailto:info@dexterzsol.com"
+                        href="mailto:info@dexterztechnologies.com"
                         className="text-gray-300 hover:text-white transition-colors">
-                        info@dexterzsol.com
+                        info@dexterztechnologies.com
                       </a>
                     </div>
                   </div>
@@ -136,9 +136,9 @@ const ContactSection = () => {
                     <div>
                       <p className="text-brand-teal mb-1 font-medium">Phone</p>
                       <a
-                        href="tel:+16463498248"
+                        href="tel:+13322523899"
                         className="text-gray-300 hover:text-white transition-colors">
-                        +1 646 349 8248
+                        +1 (332) 252-3899
                       </a>
                     </div>
                   </div>
@@ -146,35 +146,12 @@ const ContactSection = () => {
                   <div className="flex items-start space-x-3">
                     <MapPin className="w-5 h-5 text-brand-teal mt-0.5" />
                     <div>
-                      <p className="text-brand-teal mb-1 font-medium">Addresses</p>
-                      <div className="space-y-4">
-                        <div>
-                          <p className="text-brand-teal font-medium text-sm mb-1">Head Office</p>
-                          <address className="text-gray-300 not-italic text-sm">
-                            86 Pemberton Ave
-                            <br />
-                            Staten Island, New York 10308, United States
-                          </address>
-                        </div>
-
-                        <div>
-                          <p className="text-brand-teal font-medium text-sm mb-1">Office 1</p>
-                          <address className="text-gray-300 not-italic text-sm">
-                            6997 Muhammad Nour Jakhdar
-                            <br />
-                            Al Safa, Jeddah 23453, Kingdom of Saudi Arabia
-                          </address>
-                        </div>
-
-                        <div>
-                          <p className="text-brand-teal font-medium text-sm mb-1">Office 2</p>
-                          <address className="text-gray-300 not-italic text-sm">
-                            40, Broadway Commercial
-                            <br />
-                            Parkview City, Lahore, Punjab 54000, Pakistan
-                          </address>
-                        </div>
-                      </div>
+                      <p className="text-brand-teal mb-1 font-medium">Address</p>
+                      <address className="text-gray-300 not-italic text-sm">
+                        1425 Woodward Ave
+                        <br />
+                        Detroit, MI 48226, United States
+                      </address>
                     </div>
                   </div>
 

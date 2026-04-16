@@ -682,7 +682,7 @@ const Careers = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:careers@dexterzsol.com?subject=Job%20Application&body=Hello%20Dexter%20Zsol."
+                href="mailto:careers@dexterztechnologies.com?subject=Job%20Application&body=Hello%20Dexterz%20Technologies."
                 className="inline-block">
                 <Button
                   variant="outline"
@@ -826,11 +826,10 @@ const Careers = () => {
               <div className="relative">
                 {!applicationForm.cv ? (
                   <div
-                    className={`w-full p-6 border-2 border-dashed rounded-lg transition-all duration-300 cursor-pointer ${
-                      isDragOver
+                    className={`w-full p-6 border-2 border-dashed rounded-lg transition-all duration-300 cursor-pointer ${isDragOver
                         ? "border-brand-teal bg-brand-teal/10"
                         : "border-gray-300 bg-gray-50 hover:bg-gray-100"
-                    }`}
+                      }`}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
@@ -846,9 +845,8 @@ const Careers = () => {
                     <div className="text-center text-gray-600">
                       <div className="flex justify-center items-center mb-3">
                         <Upload
-                          className={`h-6 w-6 ${
-                            isDragOver ? "text-brand-teal" : "text-brand-teal"
-                          }`}
+                          className={`h-6 w-6 ${isDragOver ? "text-brand-teal" : "text-brand-teal"
+                            }`}
                         />
                       </div>
                       <p className="text-sm">

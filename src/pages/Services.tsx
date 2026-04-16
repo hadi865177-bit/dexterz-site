@@ -652,6 +652,106 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Consultation Services - Dark */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-brand-navy/80 to-gray-900 text-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-brand-teal/20 text-brand-teal px-4 py-2 rounded-full mb-6 border border-brand-teal/30">
+              <Lightbulb className="h-4 w-4" />
+              <span className="text-sm font-medium">Core Service 6</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Technology <span className="text-brand-teal">Consultation</span>
+            </h2>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              Strategic guidance and expert advisory to help you make the right technology
+              decisions, reduce risk, and accelerate your growth trajectory.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Technology Strategy",
+                description: "Define the right technology roadmap aligned with your business objectives for measurable growth.",
+                icon: <Target size={28} />,
+              },
+              {
+                title: "Digital Transformation",
+                description: "Modernize legacy systems and adopt digital-first approaches that streamline operations.",
+                icon: <Zap size={28} />,
+              },
+              {
+                title: "AI & Automation Advisory",
+                description: "Identify high-impact opportunities to integrate AI and intelligent automation into your workflows.",
+                icon: <Brain size={28} />,
+              },
+              {
+                title: "Architecture & Design",
+                description: "Design scalable, secure, and future-proof system architectures that support your growth.",
+                icon: <Award size={28} />,
+              },
+            ].map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8 }}
+                className="group">
+                <Link
+                  to="/services/consultation"
+                  className="block bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-brand-teal/30 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  <div className="relative z-10 w-16 h-16 bg-gradient-to-br from-brand-teal/20 to-brand-teal/30 text-brand-teal rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-teal group-hover:text-white transition-all duration-500">
+                    {service.icon}
+                  </div>
+
+                  <h3 className="relative z-10 text-xl font-bold text-white mb-3 group-hover:text-brand-teal transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="relative z-10 text-gray-300 mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  <div className="relative z-10 flex items-center text-brand-teal font-semibold group-hover:text-white transition-colors duration-300">
+                    Learn more{" "}
+                    <ArrowRight
+                      size={18}
+                      className="ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                    />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center mt-12">
+            <Link
+              to="/services/consultation"
+              className="inline-flex items-center text-brand-teal hover:text-white font-semibold text-lg transition-colors duration-300">
+              View all Consultation services{" "}
+              <ArrowRight
+                size={20}
+                className="ml-2 group-hover:translate-x-1 transition-transform duration-300"
+              />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Enhanced Service Process - Dark */}
       <section className="py-20 bg-gradient-to-br from-gray-900 via-brand-navy/80 to-gray-900 text-white">
         <div className="container mx-auto px-4">

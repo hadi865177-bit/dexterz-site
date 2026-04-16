@@ -139,6 +139,14 @@ const Footer = () => {
                   Cloud Solutions
                 </Link>
               </li>
+              <li className="flex items-center">
+                <Building2 size={16} className="mr-2 text-brand-teal" />
+                <Link
+                  to="/services/consultation"
+                  className="text-gray-300 hover:text-brand-teal transition-colors">
+                  Consultation
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -182,23 +190,23 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 text-brand-teal mt-1" />
                 <span className="text-gray-300">
-                  86 Pemberton Ave, Staten Island, New York 10308, United States
+                  1425 Woodward Ave, Detroit, MI 48226, United States
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 text-brand-teal" />
                 <a
-                  href="tel:+16463498248"
+                  href="tel:+13322523899"
                   className="text-gray-300 hover:text-brand-teal transition-colors">
-                  +1 646 349 8248
+                  +1 (332) 252-3899
                 </a>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 text-brand-teal" />
                 <a
-                  href="mailto:info@dexterzsol.com"
+                  href="mailto:info@dexterztechnologies.com"
                   className="text-gray-300 hover:text-brand-teal transition-colors">
-                  info@dexterzsol.com
+                  info@dexterztechnologies.com
                 </a>
               </li>
               <li className="flex items-center">
