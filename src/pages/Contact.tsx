@@ -119,20 +119,20 @@ const Contact = () => {
     {
       icon: <Mail className="text-brand-teal" />,
       title: "Email Us",
-      details: "info@dexterzsol.com",
-      link: "mailto:info@dexterzsol.com",
+      details: "info@dexterztechnologies.com",
+      link: "mailto:info@dexterztechnologies.com",
     },
     {
       icon: <Phone className="text-brand-teal" />,
       title: "Call Us",
-      details: "+1 646 349 8248",
-      link: "tel:+16463498248",
+      details: "+1 (332) 252-3899",
+      link: "tel:+13322523899",
     },
     {
       icon: <MapPin className="text-brand-teal" />,
       title: "Visit Us",
-      details: "86 Pemberton Ave, Staten Island, New York 10308, United States",
-      link: "",
+      details: "1425 Woodward Ave, Detroit, MI 48226, United States",
+      link: "https://goo.gl/maps/Q7Y6J8X2j5a1L3m6",
     },
   ];
 
