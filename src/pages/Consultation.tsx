@@ -52,39 +52,39 @@ const ServiceFeature = ({ title, description, icon, delay = 0 }: ServiceFeatureP
 const Consultation = () => {
   const consultationServices = [
     {
-      title: "Technology Strategy",
+      title: "Strategic Innovation Roadmaps",
       description:
-        "Define the right technology roadmap aligned with your business objectives, ensuring every investment drives measurable growth.",
+        "Architecting long-term technology paths that align with your business vision, ensuring every investment creates a competitive advantage.",
       icon: <Compass size={24} />,
     },
     {
-      title: "Digital Transformation",
+      title: "Enterprise Modernization",
       description:
-        "Modernize legacy systems and adopt digital-first approaches that streamline operations and enhance customer experiences.",
+        "Transforming legacy ecosystems into agile, digital-first operations that drive efficiency and enhance global scalability.",
       icon: <Zap size={24} />,
     },
     {
-      title: "AI & Automation Advisory",
+      title: "AI & Automation Strategy",
       description:
-        "Identify high-impact opportunities to integrate AI, machine learning, and intelligent automation into your workflows.",
+        "Identifying high-impact opportunities for intelligent automation to streamline complex workflows and unlock predictive insights.",
       icon: <Brain size={24} />,
     },
     {
-      title: "Architecture & Design",
+      title: "Scalable Systems Architecture",
       description:
-        "Design scalable, secure, and future-proof system architectures that support your business growth trajectory.",
+        "Designing robust, secure, and future-ready technical frameworks that provide the foundation for sustainable business growth.",
       icon: <Layers size={24} />,
     },
     {
-      title: "Product Discovery",
+      title: "Product Lifecycle Discovery",
       description:
-        "Validate ideas, define MVPs, and create product strategies backed by market research and technical feasibility analysis.",
+        "Comprehensive market research and technical validation to define strategic MVPs and long-term product evolution paths.",
       icon: <Search size={24} />,
     },
     {
-      title: "Performance Optimization",
+      title: "Operational Performance Audit",
       description:
-        "Audit existing systems, identify bottlenecks, and implement optimizations that boost speed, reliability, and user satisfaction.",
+        "Rigorous analysis of existing systems to identify bottlenecks and implement optimizations for superior speed and reliability.",
       icon: <BarChart3 size={24} />,
     },
   ];
@@ -154,8 +154,8 @@ const Consultation = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Strategic guidance to help you make the right technology decisions,
-              accelerate growth, and stay ahead of the competition
+              Empowering businesses with long-term strategic clarity and innovation-driven 
+              leadership to navigate the complex digital landscape and drive sustainable growth.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">

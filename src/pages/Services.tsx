@@ -28,6 +28,7 @@ import {
   Target,
   Lightbulb,
   Award,
+  Compass,
 } from "lucide-react";
 import PageLayout from "../components/layout/PageLayout";
 
@@ -115,35 +116,35 @@ const Services = () => {
 
   const staffingServices = [
     {
-      title: "Hire Developers & Tech Teams",
+      title: "Integrated Engineering Teams",
       description:
-        "Access skilled developers and complete tech teams on demand for your projects and initiatives.",
+        "Dedicated development squads that embed within your organization, adopting your culture and technical standards.",
       icon: <Users size={28} />,
-      link: "/services/staff/developers",
+      link: "/services/staff-augmentation",
       color: "navy" as const,
     },
     {
-      title: "HR Recruitment Solutions",
+      title: "Strategic Talent Advisory",
       description:
-        "Find the perfect talent with specialized tech recruitment and comprehensive HR support.",
+        "Expert recruitment strategies designed for complex enterprise environments and specialized roles.",
       icon: <Briefcase size={28} />,
-      link: "/services/staff/recruitment",
+      link: "/services/staff-augmentation",
       color: "navy" as const,
     },
     {
-      title: "Remote Team Management",
+      title: "Global Capability Centers",
       description:
-        "Efficiently manage distributed teams with specialized tools and proven methodologies.",
+        "Managed remote operations that function as a core extension of your business across borders.",
       icon: <Monitor size={28} />,
-      link: "/services/staff/remote-teams",
+      link: "/services/staff-augmentation",
       color: "navy" as const,
     },
     {
-      title: "Resource Outsourcing",
+      title: "Domain-Specific Augmentation",
       description:
-        "Reduce costs by outsourcing roles and specialized projects to our expert teams.",
+        "Infuse your projects with deep technical expertise in AI, Cloud, or Fintech to accelerate delivery.",
       icon: <Globe size={28} />,
-      link: "/services/staff/outsourcing",
+      link: "/services/staff-augmentation",
       color: "navy" as const,
     },
   ];
@@ -414,11 +415,11 @@ const Services = () => {
               <span className="text-sm font-medium">Core Service 2</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Staff Augmentation & <span className="text-brand-teal">Recruitment</span>
+              Staff <span className="text-brand-teal">Augmentation</span>
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Build your ideal tech team with our flexible staffing solutions and expert recruitment
-              services. Access top talent when you need it most.
+              Seamlessly integrating world-class technical expertise into your organization's core
+              operations to drive long-term innovation and operational excellence.
             </p>
           </motion.div>
 
@@ -669,31 +670,31 @@ const Services = () => {
               Technology <span className="text-brand-teal">Consultation</span>
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Strategic guidance and expert advisory to help you make the right technology
-              decisions, reduce risk, and accelerate your growth trajectory.
+              Empowering businesses with long-term strategic clarity and innovation-driven
+              leadership to navigate the complex digital landscape and drive sustainable growth.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: "Technology Strategy",
-                description: "Define the right technology roadmap aligned with your business objectives for measurable growth.",
-                icon: <Target size={28} />,
+                title: "Strategic Innovation Roadmaps",
+                description: "Architecting technology paths that align with your business vision to ensure sustainable growth.",
+                icon: <Compass size={28} />,
               },
               {
-                title: "Digital Transformation",
-                description: "Modernize legacy systems and adopt digital-first approaches that streamline operations.",
+                title: "Enterprise Modernization",
+                description: "Transforming legacy ecosystems into agile, digital-first operations that drive efficiency.",
                 icon: <Zap size={28} />,
               },
               {
-                title: "AI & Automation Advisory",
-                description: "Identify high-impact opportunities to integrate AI and intelligent automation into your workflows.",
+                title: "AI & Automation Strategy",
+                description: "Identifying high-impact opportunities for intelligent automation to streamline operations.",
                 icon: <Brain size={28} />,
               },
               {
-                title: "Architecture & Design",
-                description: "Design scalable, secure, and future-proof system architectures that support your growth.",
+                title: "Scalable Systems Architecture",
+                description: "Designing robust, secure, and future-ready technical frameworks that provide for business growth.",
                 icon: <Award size={28} />,
               },
             ].map((service, index) => (

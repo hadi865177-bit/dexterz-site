@@ -6,18 +6,18 @@ import { motion } from "framer-motion";
 const StaffAugmentationSection = () => {
   const staffingFeatures = [
     {
-      title: "Hire Developers & Tech Teams",
-      description: "Access a pool of 200+ pre-vetted developers to scale your projects on demand.",
+      title: "Embedded Engineering Squads",
+      description: "Dedicated development teams that fully integrate with your internal R&D, adopting your tools and delivery standards.",
       icon: <Users />,
     },
     {
-      title: "Rapid Onboarding",
-      description: "Go from requirement analysis to team integration in just 2-3 weeks on average.",
+      title: "Operational Synergy",
+      description: "Our experts sync perfectly with your communication channels and culture, operating with the same passion as your in-house team.",
       icon: <Monitor />,
     },
     {
-      title: "Global Talent Pool",
-      description: "Tap into world-class technical talent across 15+ countries for diverse expertise.",
+      title: "Enterprise-Scale Capacity",
+      description: "Seamlessly scale your technical capabilities for high-stakes projects with pre-vetted domain specialists.",
       icon: <Globe />,
     },
   ];
@@ -35,10 +35,10 @@ const StaffAugmentationSection = () => {
             <span className="text-sm font-medium">Talent Solutions</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-brand-navy">
-            Staff Augmentation & <span className="text-brand-teal">Recruitment</span>
+            Staff <span className="text-brand-teal">Augmentation</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Build your ideal tech team with flexible staffing solutions and access to pre-vetted talent.
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            Integrating world-class engineering squads directly into your organization's core operations to drive mission-critical innovation.
           </p>
         </div>
 

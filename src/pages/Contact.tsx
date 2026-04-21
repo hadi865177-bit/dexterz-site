@@ -258,48 +258,19 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold text-lg mb-4 text-white flex items-center">
                           <Building2 className="h-5 w-5 text-brand-teal mr-2" />
-                          Our Offices
+                          Our Office
                         </h3>
                         <div className="space-y-4">
                           <div>
-                            <h4 className="font-medium text-brand-teal mb-1">Head Office</h4>
                             <p className="text-sm">
-                              86 Pemberton Ave
+                              1425 Woodward Ave
                               <br />
-                              Staten Island, New York 10308, United States
+                              Detroit, MI 48226, United States
                               <br />
                               <a
-                                href="tel:+16463498248"
+                                href="tel:+13322523899"
                                 className="text-brand-teal hover:underline">
-                                +1 646 349 8248
-                              </a>
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="font-medium text-brand-teal mb-1">Office 1</h4>
-                            <p className="text-sm">
-                              6997 Muhammad Nour Jakhdar
-                              <br />
-                              Al Safa, Jeddah 23453, Kingdom of Saudi Arabia
-                              <br />
-                              <a
-                                href="tel:+966537177486"
-                                className="text-brand-teal hover:underline">
-                                +966 53 717 7486
-                              </a>
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="font-medium text-brand-teal mb-1">Office 2</h4>
-                            <p className="text-sm">
-                              40, Broadway Commercial
-                              <br />
-                              Parkview City, Lahore, Punjab 54000, Pakistan
-                              <br />
-                              <a
-                                href="tel:+16463498248"
-                                className="text-brand-teal hover:underline">
-                                +1 646 349 8248
+                                +1 (332) 252-3899
                               </a>
                             </p>
                           </div>
