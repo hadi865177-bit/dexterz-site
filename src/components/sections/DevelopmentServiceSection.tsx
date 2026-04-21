@@ -18,49 +18,42 @@ const DevelopmentServiceSection = () => {
       description:
         "Create responsive, modern web applications with cutting-edge technologies and user-centric design.",
       icon: <Globe />,
-      link: "/services/development/web",
+      link: "/services/development",
     },
     {
       title: "Mobile App Development",
       description:
         "Build native and cross-platform mobile applications for iOS and Android with seamless user experiences.",
       icon: <Smartphone />,
-      link: "/services/development/mobile",
+      link: "/services/mobile",
     },
     {
       title: "Custom Software Development",
       description:
         "Develop bespoke software solutions tailored to your specific business requirements and challenges.",
       icon: <Code />,
-      link: "/services/development/custom",
+      link: "/services/development",
     },
     {
       title: "CRM & ERP Solutions",
       description:
         "Implement and customize enterprise systems to streamline operations and enhance business efficiency.",
       icon: <Database />,
-      link: "/services/development/crm-erp",
+      link: "/services/development",
     },
-    // {
-    //   title: "API Development & Integration",
-    //   description:
-    //     "Create and integrate APIs to connect your systems and enable seamless data exchange between applications.",
-    //   icon: <Link />,
-    //   link: "/services/development/api",
-    // },
     {
       title: "Cloud Solutions",
       description:
         "Harness the power of cloud technology for scalable, secure, and cost-effective infrastructure solutions.",
       icon: <Cloud />,
-      link: "/services/development/cloud",
+      link: "/services/cloud",
     },
     {
       title: "DevOps Services",
       description:
         "Implement DevOps practices to improve collaboration, increase deployment frequency, and ensure product quality.",
       icon: <Cog />,
-      link: "/services/development/devops",
+      link: "/services/cloud",
     },
   ];
 

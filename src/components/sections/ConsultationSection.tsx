@@ -6,21 +6,21 @@ import { motion } from "framer-motion";
 const ConsultationSection = () => {
   const consultationServices = [
     {
-      title: "Technology Strategy",
+      title: "Strategic Innovation Roadmaps",
       description:
-        "Define a winning roadmap aligned with your business vision to ensure long-term scalability and ROI.",
+        "Architecting technology paths that align with your business vision to ensure sustainable growth and long-term ROI.",
       icon: <Compass />,
     },
     {
-      title: "AI & Automation Advisory",
+      title: "AI & Automation Strategy",
       description:
-        "Expert guidance on integrating Generative AI and intelligent automation to revolutionize your operations.",
+        "Identifying high-impact opportunities for intelligent automation to streamline operations and unlock predictive insights.",
       icon: <Brain />,
     },
     {
-      title: "Architecture & Design",
+      title: "Enterprise Modernization",
       description:
-        "Scalable, future-proof system designs that handle your growth while maintaining security and performance.",
+        "Transforming legacy ecosystems into agile, digital-first operations that drive efficiency and global scalability.",
       icon: <Layers />,
     },
   ];
@@ -39,10 +39,10 @@ const ConsultationSection = () => {
             <span className="text-sm font-medium">Expert Advisory</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-brand-navy">
-            Strategic <span className="text-brand-teal">Consultation</span>
+            Technology <span className="text-brand-teal">Consultation</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Expert guidance to help you navigate complex technology landscapes and drive measurable business impact.
+            Empowering businesses with long-term strategic clarity and innovation-driven leadership to navigate the complex digital landscape.
           </p>
         </div>
 

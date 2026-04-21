@@ -48,39 +48,39 @@ const ServiceFeature = ({ title, description, icon, delay = 0 }: ServiceFeatureP
 const StaffAugmentation = () => {
   const staffingServices = [
     {
-      title: "Hire Developers & Tech Teams",
+      title: "Embedded Engineering Squads",
       description:
-        "Access skilled developers and complete tech teams on demand to scale your projects quickly and efficiently.",
+        "High-performance development teams that fully integrate with your internal R&D, adopting your tools, culture, and delivery standards for true synergy.",
       icon: <Users size={24} />,
     },
     {
-      title: "HR Recruitment Solutions",
+      title: "Executive Talent Advisory",
       description:
-        "Find the perfect talent with our specialized tech recruitment services tailored to your company's needs.",
+        "Strategic talent consulting for large-scale digital initiatives, identifying key technical leaders and domain specialists who align with your long-term roadmap.",
       icon: <Briefcase size={24} />,
     },
     {
-      title: "Remote Team Management",
+      title: "Global Capability Centers (GCC)",
       description:
-        "Efficiently manage distributed teams with our tools and methodologies designed for remote collaboration.",
+        "Setting up managed technical centers that act as a seamless extension of your global footprint, ensuring standardized quality and cross-border innovation.",
       icon: <Monitor size={24} />,
     },
     {
-      title: "Resource Outsourcing",
+      title: "Niche Domain Augmentation",
       description:
-        "Reduce operational costs and focus on your core business by outsourcing specific roles and projects.",
+        "Infusing mission-critical projects with rare expertise in AI, Cloud Governance, or Fintech compliance to bridge specialized knowledge gaps.",
       icon: <Globe size={24} />,
     },
     {
-      title: "Talent Acquisition",
+      title: "Engineering Culture Synergy",
       description:
-        "Streamlined hiring process with pre-vetted candidates and comprehensive skill assessments.",
+        "Beyond technical skills, we provide professionals who match your organizational values and operational maturity, ensuring low friction and high output.",
       icon: <Search size={24} />,
     },
     {
-      title: "Project-Based Staffing",
+      title: "Strategic Mission Units",
       description:
-        "Flexible staffing solutions for specific projects with defined timelines and deliverables.",
+        "Agile task forces assembled for rapid deployment on high-stakes, time-sensitive projects with defined performance benchmarks and strategic goals.",
       icon: <Clock size={24} />,
     },
   ];
@@ -170,12 +170,12 @@ const StaffAugmentation = () => {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-brand-teal/90 to-white bg-clip-text text-transparent">
-              Staff Augmentation & Recruitment
+              Staff Augmentation
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Build your ideal tech team with flexible staffing solutions and expert recruitment
-              services
+            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
+              Empowering global enterprises by integrating world-class engineering culture and 
+              specialized expertise directly into their core development ecosystems.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -239,20 +239,22 @@ const StaffAugmentation = () => {
               </div>
 
               <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                Scale Your Team with <span className="text-brand-teal">Top Talent</span>
+                The Embedded <span className="text-brand-teal">Expert Model</span>
               </h2>
 
               <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-                Our Staff Augmentation and Recruitment services provide you with access to
-                world-class technical talent when you need it most. Whether you're looking to scale
-                your development team, fill specialized roles, or manage remote teams effectively,
-                we have the solutions to meet your needs.
+                We don't just provide talent; we integrate technical excellence directly into your 
+                organizational fabric. For our enterprise partners, we offer an **Embedded Expert 
+                Model** where our high-performing engineers become a permanent, dedicated 
+                extension of your in-house departments. 
               </p>
 
-              <p className="text-lg text-gray-300 mb-8">
-                With our extensive network of pre-vetted professionals and proven recruitment
-                processes, we help you build high-performing teams that drive innovation and deliver
-                exceptional results.
+              <p className="text-lg text-gray-600 mb-8">
+                By aligning with your internal SDLC, communication protocols, and cultural values, 
+                we ensure that our teams operate with the same passion and focus as your own 
+                full-time employees. This deep integration allows us to handle high-stakes, 
+                large-scale projects for global industry leaders who require precision, 
+                security, and long-term scalability.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -459,23 +461,23 @@ const StaffAugmentation = () => {
             {[
               {
                 step: "01",
-                title: "Requirement Analysis",
-                description: "Understand your specific needs, culture, and project requirements",
+                title: "Cultural & Operational Audit",
+                description: "We analyze your internal engineering culture, tools, and communication styles to ensure our experts sync perfectly from day one.",
               },
               {
                 step: "02",
-                title: "Talent Sourcing",
-                description: "Source and screen candidates from our extensive network",
+                title: "Synergy Selection",
+                description: "Sourcing domain-specific engineers who not only possess the skills but also the mindset to thrive within your specific enterprise ecosystem.",
               },
               {
                 step: "03",
-                title: "Assessment & Matching",
-                description: "Evaluate skills and ensure cultural fit with your team",
+                title: "Ecosystem Integration",
+                description: "Our experts join your internal channels, stand-ups, and sprint planning, becoming indistinguishable from your core in-house team.",
               },
               {
                 step: "04",
-                title: "Onboarding & Support",
-                description: "Facilitate smooth integration and provide ongoing support",
+                title: "Managed Scaling & Success",
+                description: "Ongoing partnership reviews and performance optimization to ensure our integrated capacity evolves with your business growth.",
               },
             ].map((process, index) => (
               <motion.div
