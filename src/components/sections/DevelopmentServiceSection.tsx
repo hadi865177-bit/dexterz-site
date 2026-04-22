@@ -3,9 +3,10 @@ import {
   Smartphone,
   Code,
   Database,
-  Link,
   Cloud,
   Cog,
+  Brain,
+  Building2,
   Code as CodeIcon,
 } from "lucide-react";
 import ServiceCard from "../services/ServiceCard";
@@ -14,46 +15,46 @@ import { motion } from "framer-motion";
 const DevelopmentServiceSection = () => {
   const devServices = [
     {
-      title: "Web Development",
+      title: "Full Stack Development",
       description:
-        "Create responsive, modern web applications with cutting-edge technologies and user-centric design.",
+        "Building robust, end-to-end web and mobile applications using modern frameworks and mission-critical reliability standards.",
       icon: <Globe />,
       link: "/services/development",
     },
     {
-      title: "Mobile App Development",
+      title: "AI & Machine Learning",
       description:
-        "Build native and cross-platform mobile applications for iOS and Android with seamless user experiences.",
-      icon: <Smartphone />,
-      link: "/services/mobile",
+        "Developing intelligent systems and predictive models that leverage advanced neural networks and deep learning.",
+      icon: <Brain />,
+      link: "/services/ai",
     },
     {
-      title: "Custom Software Development",
+      title: "Data Science & Analytics",
       description:
-        "Develop bespoke software solutions tailored to your specific business requirements and challenges.",
-      icon: <Code />,
-      link: "/services/development",
-    },
-    {
-      title: "CRM & ERP Solutions",
-      description:
-        "Implement and customize enterprise systems to streamline operations and enhance business efficiency.",
+        "Extracting actionable insights from complex datasets to drive data-driven decision making and strategic growth.",
       icon: <Database />,
-      link: "/services/development",
+      link: "/services/ai",
     },
     {
-      title: "Cloud Solutions",
+      title: "DevOps & Cloud Engineering",
       description:
-        "Harness the power of cloud technology for scalable, secure, and cost-effective infrastructure solutions.",
-      icon: <Cloud />,
-      link: "/services/cloud",
-    },
-    {
-      title: "DevOps Services",
-      description:
-        "Implement DevOps practices to improve collaboration, increase deployment frequency, and ensure product quality.",
+        "Automating CI/CD pipelines and managing high-availability cloud infrastructure for seamless global scaling.",
       icon: <Cog />,
       link: "/services/cloud",
+    },
+    {
+      title: "Microsoft Dynamics 365",
+      description:
+        "Strategic implementation and customization of Dynamics 365 to unify enterprise operations and workflows.",
+      icon: <Building2 />,
+      link: "/services/consultation",
+    },
+    {
+      title: "Custom Software Engineering",
+      description:
+        "Architecting bespoke software solutions tailored to solve complex operational challenges and drive innovation.",
+      icon: <Code />,
+      link: "/services/development",
     },
   ];
 
@@ -75,8 +76,7 @@ const DevelopmentServiceSection = () => {
             Software <span className="text-brand-teal">Development</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From concept to deployment, we deliver robust software solutions tailored to your unique
-            business needs.
+            Enterprise-grade software engineering across Data Science, AI/ML, Full Stack, DevOps, and Microsoft Dynamics 365 platforms.
           </p>
         </div>
 

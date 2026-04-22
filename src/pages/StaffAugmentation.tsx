@@ -16,6 +16,10 @@ import {
   Rocket,
   Star,
   CheckCircle,
+  Building2,
+  Brain,
+  Code,
+  Cloud,
   Heart,
 } from "lucide-react";
 import PageLayout from "../components/layout/PageLayout";
@@ -48,39 +52,39 @@ const ServiceFeature = ({ title, description, icon, delay = 0 }: ServiceFeatureP
 const StaffAugmentation = () => {
   const staffingServices = [
     {
-      title: "Embedded Engineering Squads",
+      title: "Data Science & AI/ML Engineers",
       description:
-        "High-performance development teams that fully integrate with your internal R&D, adopting your tools, culture, and delivery standards for true synergy.",
-      icon: <Users size={24} />,
+        "Specialized teams of data scientists and ML engineers who integrate into your R&D to build predictive models, neural networks, and intelligent systems.",
+      icon: <Brain size={24} />,
     },
     {
-      title: "Executive Talent Advisory",
+      title: "Full Stack & DevOps Integration",
       description:
-        "Strategic talent consulting for large-scale digital initiatives, identifying key technical leaders and domain specialists who align with your long-term roadmap.",
-      icon: <Briefcase size={24} />,
+        "End-to-end engineering teams capable of managing complex front-to-back architectures while automating CI/CD pipelines for rapid delivery.",
+      icon: <Code size={24} />,
     },
     {
-      title: "Global Capability Centers (GCC)",
+      title: "Microsoft Dynamics 365 Experts",
       description:
-        "Setting up managed technical centers that act as a seamless extension of your global footprint, ensuring standardized quality and cross-border innovation.",
-      icon: <Monitor size={24} />,
+        "Certified professionals specializing in Dynamics 365 implementation, customization, and Power Platform integration to unify your enterprise operations.",
+      icon: <Building2 size={24} />,
     },
     {
-      title: "Niche Domain Augmentation",
+      title: "Enterprise Cloud & DevOps",
       description:
-        "Infusing mission-critical projects with rare expertise in AI, Cloud Governance, or Fintech compliance to bridge specialized knowledge gaps.",
-      icon: <Globe size={24} />,
+        "Managed technical experts focusing on cloud infrastructure (AWS, Azure, GCP), security compliance, and high-availability systems architecture.",
+      icon: <Cloud size={24} />,
     },
     {
       title: "Engineering Culture Synergy",
       description:
-        "Beyond technical skills, we provide professionals who match your organizational values and operational maturity, ensuring low friction and high output.",
+        "Beyond technical skills, we provide professionals who match your organizational values and operational maturity for seamless integration.",
       icon: <Search size={24} />,
     },
     {
       title: "Strategic Mission Units",
       description:
-        "Agile task forces assembled for rapid deployment on high-stakes, time-sensitive projects with defined performance benchmarks and strategic goals.",
+        "Agile task forces assembled for high-stakes, time-sensitive projects with defined performance benchmarks and strategic goals.",
       icon: <Clock size={24} />,
     },
   ];
@@ -110,41 +114,55 @@ const StaffAugmentation = () => {
   ];
 
   const roles = [
-    "Frontend Developers",
-    "Backend Developers",
-    "Full-Stack Developers",
-    "Mobile Developers",
-    "DevOps Engineers",
     "Data Scientists",
-    "UI/UX Designers",
-    "Project Managers",
-    "QA Engineers",
+    "ML/AI Engineers",
+    "Full-Stack Developers",
+    "Frontend Engineers (React/Vue/Angular)",
+    "Backend Engineers (Node.js/Python/.NET)",
+    "DevOps Engineers",
+    "Cloud Architects (AWS/Azure/GCP)",
+    "Microsoft Dynamics 365 Consultants",
+    "Data Engineers",
+    "MLOps Engineers",
+    "Mobile Developers (iOS/Android)",
+    "QA/Test Automation Engineers",
     "System Architects",
-    "Cloud Engineers",
-    "AI/ML Engineers",
+    "Security Engineers",
+    "Project Managers",
+    "UI/UX Designers",
   ];
 
   const technologies = [
+    "Python",
+    "TensorFlow",
+    "PyTorch",
+    "Scikit-learn",
+    "Pandas",
+    "NumPy",
     "React",
     "Node.js",
-    "Python",
-    "Java",
+    "TypeScript",
+    "Next.js",
+    ".NET Core",
     "C#",
-    "PHP",
-    "Ruby",
-    "Go",
+    "Java",
+    "Spring Boot",
+    "Docker",
+    "Kubernetes",
+    "Jenkins",
+    "GitLab CI/CD",
+    "Terraform",
+    "Ansible",
     "AWS",
     "Azure",
     "Google Cloud",
-    "Docker",
-    "Kubernetes",
-    "MongoDB",
+    "Microsoft Dynamics 365",
+    "Power Platform",
     "PostgreSQL",
-    "MySQL",
+    "MongoDB",
     "Redis",
     "Elasticsearch",
-    "TensorFlow",
-    "PyTorch",
+    "Apache Kafka",
   ];
 
   const stats = [
@@ -244,8 +262,7 @@ const StaffAugmentation = () => {
 
               <p className="text-xl text-gray-300 mb-6 leading-relaxed">
                 We don't just provide talent; we integrate technical excellence directly into your 
-                organizational fabric. For our enterprise partners, we offer an **Embedded Expert 
-                Model** where our high-performing engineers become a permanent, dedicated 
+                organizational fabric. For our enterprise partners, we offer an <span className="text-brand-teal font-bold">Embedded Expert Model</span> where our high-performing engineers become a permanent, dedicated 
                 extension of your in-house departments. 
               </p>
 

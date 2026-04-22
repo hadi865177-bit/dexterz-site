@@ -9,13 +9,13 @@ const ServiceCardsSection = () => {
   const services = [
     {
       id: 1,
-      title: "AI & ML Integrations",
+      title: "AI/ML & Data Science",
       description:
-        "Integrate cutting-edge AI and ML capabilities into your existing systems to enhance functionality and decision-making.",
+        "Integrate cutting-edge AI and ML capabilities with sophisticated data science models using TensorFlow, PyTorch, and advanced algorithms to enhance decision-making.",
       backgroundColor: "bg-brand-teal",
       textColor: "text-white hover:text-white",
       icon: <Brain />,
-      skills: ["Machine Learning", "Deep Learning", "Neural Networks", "TensorFlow", "PyTorch"],
+      skills: ["Machine Learning", "Deep Learning", "Data Science", "TensorFlow", "PyTorch"],
       graphic: (
         <div className="absolute top-4 left-8 right-8 h-56">
           <div className="flex items-center justify-center h-full">
@@ -30,7 +30,7 @@ const ServiceCardsSection = () => {
       id: 2,
       title: "AI Automation Solutions",
       description:
-        "Automate routine tasks and workflows with intelligent AI systems that learn and improve over time.",
+        "Automate routine tasks and complex workflows with intelligent AI systems and RPA that learn and improve over time.",
       backgroundColor: "bg-brand-teal/10",
       textColor: "text-teal-500 hover:text-teal-500",
       icon: <Bot />,
@@ -55,7 +55,7 @@ const ServiceCardsSection = () => {
       id: 3,
       title: "Chatbot Development",
       description:
-        "Create intelligent conversational agents that engage with your customers, answer questions, and provide assistance.",
+        "Create intelligent conversational agents that engage with your customers, answer questions, and provide assistance using advanced NLP.",
       backgroundColor: "bg-brand-teal",
       textColor: "text-white hover:text-white",
       icon: <MessageSquare />,
@@ -74,7 +74,7 @@ const ServiceCardsSection = () => {
       id: 4,
       title: "Intelligent Data Processing",
       description:
-        "Process and analyze large datasets with AI-powered tools that extract valuable insights and patterns.",
+        "Process and analyze large datasets with AI-powered tools that extract valuable insights and patterns for strategic decisions.",
       backgroundColor: "bg-brand-teal/10",
       textColor: "text-teal-500 hover:text-teal-500",
       icon: <Database />,

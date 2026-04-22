@@ -15,13 +15,12 @@ const CtaSection = () => {
 
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Business with{" "}
-            <span className="text-brand-teal">AI Solutions?</span>
+            <span className="text-brand-teal">Advanced Technology?</span>
           </h2>
 
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Partner with Dexterz Technologies to harness the power of AI, gain access to top
-            development talent, and accelerate your business growth with innovative technology
-            solutions.
+            Partner with Dexterz Technologies to leverage Data Science, AI/ML engineering, Full Stack development, 
+            DevOps automation, and Microsoft Dynamics 365 expertise that accelerates your digital transformation.
           </p>
 
           <div className="flex flex-col md:flex-row gap-4 justify-center">

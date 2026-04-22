@@ -29,6 +29,7 @@ import {
   Lightbulb,
   Award,
   Compass,
+  Building2,
 } from "lucide-react";
 import PageLayout from "../components/layout/PageLayout";
 
@@ -81,9 +82,9 @@ const ServiceItem = ({ title, description, icon, link, color, delay = 0 }: Servi
 const Services = () => {
   const aiServices = [
     {
-      title: "AI & ML Integrations",
+      title: "Data Science & ML Models",
       description:
-        "Integrate cutting-edge AI capabilities into existing systems for enhanced functionality and intelligent automation.",
+        "Build sophisticated predictive models and custom ML algorithms tailored to your enterprise data.",
       icon: <Brain size={28} />,
       link: "/services/ai/integrations",
       color: "teal" as const,
@@ -91,23 +92,23 @@ const Services = () => {
     {
       title: "AI Automation Solutions",
       description:
-        "Automate routine tasks with intelligent AI systems that learn and adapt to your business processes.",
+        "Streamline complex workflows with intelligent automation systems that drive operational efficiency.",
       icon: <Bot size={28} />,
       link: "/services/ai/automation",
       color: "teal" as const,
     },
     {
-      title: "Chatbot Development",
+      title: "Natural Language Processing",
       description:
-        "Build intelligent conversational agents that engage customers and provide 24/7 support.",
+        "Implement advanced NLP solutions for sentiment analysis, translation, and conversational intelligence.",
       icon: <MessageSquare size={28} />,
       link: "/services/ai/chatbots",
       color: "teal" as const,
     },
     {
-      title: "Intelligent Data Processing",
+      title: "Big Data & Analytics",
       description:
-        "Process large datasets using AI to extract valuable insights and drive data-driven decisions.",
+        "Leverage large-scale data processing to extract actionable insights and drive strategic growth.",
       icon: <Database size={28} />,
       link: "/services/ai/data-processing",
       color: "teal" as const,
@@ -116,34 +117,34 @@ const Services = () => {
 
   const staffingServices = [
     {
-      title: "Integrated Engineering Teams",
+      title: "AI & Data Science Squads",
       description:
-        "Dedicated development squads that embed within your organization, adopting your culture and technical standards.",
-      icon: <Users size={28} />,
+        "Dedicated squads of data scientists and AI engineers who embed within your R&D for mission-critical innovation and intelligent systems.",
+      icon: <Brain size={28} />,
       link: "/services/staff-augmentation",
       color: "navy" as const,
     },
     {
-      title: "Strategic Talent Advisory",
+      title: "Full Stack & DevOps Teams",
       description:
-        "Expert recruitment strategies designed for complex enterprise environments and specialized roles.",
+        "End-to-end engineering teams specializing in complex architectures, modern frameworks, and automated CI/CD pipelines.",
+      icon: <Code size={28} />,
+      link: "/services/staff-augmentation",
+      color: "navy" as const,
+    },
+    {
+      title: "Microsoft Dynamics 365 Experts",
+      description:
+        "Certified professionals providing strategic implementation and customization of Dynamics 365 CRM, ERP, and Power Platform ecosystems.",
+      icon: <Building2 size={28} />,
+      link: "/services/staff-augmentation",
+      color: "navy" as const,
+    },
+    {
+      title: "Enterprise Tech Advisory",
+      description:
+        "Strategic talent consulting for large-scale digital transformations and high-stakes technical leadership.",
       icon: <Briefcase size={28} />,
-      link: "/services/staff-augmentation",
-      color: "navy" as const,
-    },
-    {
-      title: "Global Capability Centers",
-      description:
-        "Managed remote operations that function as a core extension of your business across borders.",
-      icon: <Monitor size={28} />,
-      link: "/services/staff-augmentation",
-      color: "navy" as const,
-    },
-    {
-      title: "Domain-Specific Augmentation",
-      description:
-        "Infuse your projects with deep technical expertise in AI, Cloud, or Fintech to accelerate delivery.",
-      icon: <Globe size={28} />,
       link: "/services/staff-augmentation",
       color: "navy" as const,
     },
@@ -371,7 +372,7 @@ const Services = () => {
               AI & <span className="text-gradient">Automation</span> Services
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Harness the power of artificial intelligence to automate tasks, gain insights, and
+              Harness the power of artificial intelligence and data science to automate tasks, gain insights, and
               create intelligent solutions that transform your business operations.
             </p>
           </motion.div>
@@ -419,7 +420,7 @@ const Services = () => {
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed">
               Seamlessly integrating world-class technical expertise into your organization's core
-              operations to drive long-term innovation and operational excellence.
+              operations to drive long-term innovation and operational excellence across Data Science, AI/ML, Full Stack, DevOps, and Microsoft Dynamics 365.
             </p>
           </motion.div>
 

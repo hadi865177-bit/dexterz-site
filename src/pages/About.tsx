@@ -125,8 +125,8 @@ const About = () => {
               <p className="text-gray-700 mb-4">
                 Founded in 2024, Dexterz Technologies began with a vision to bridge the gap between
                 advanced AI technologies and practical business applications. Our founders, with
-                backgrounds in software engineering and data science, saw the potential for AI to
-                transform businesses across industries.
+                backgrounds in software engineering, data science, and enterprise systems, saw the potential for 
+                AI/ML, Full Stack development, DevOps, and Microsoft Dynamics 365 to transform businesses across industries.
               </p>
 
               <p className="text-gray-700 mb-4">
@@ -136,8 +136,8 @@ const About = () => {
               </p>
 
               <p className="text-gray-700">
-                Today, we're proud to have helped over 100 companies across 15 countries implement
-                AI-powered solutions that drive growth, efficiency, and innovation.
+                Today, we're proud to have helped over 100 companies across 25 countries implement
+                AI-powered solutions, DevOps pipelines, and Microsoft Dynamics 365 systems that drive growth, efficiency, and innovation.
               </p>
             </motion.div>
 
@@ -193,8 +193,8 @@ const About = () => {
               <h3 className="text-xl font-bold text-white mb-4">Our Mission</h3>
               <p className="text-gray-300">
                 To empower businesses through intelligent technology solutions that solve real-world
-                problems, drive growth, and create value. We aim to make advanced AI capabilities
-                accessible and practical for companies of all sizes across industries.
+                problems, drive growth, and create value. We aim to make advanced AI, Data Science, Full Stack development, 
+                DevOps, and Microsoft Dynamics 365 capabilities accessible and practical for companies of all sizes.
               </p>
             </motion.div>
 
@@ -207,9 +207,8 @@ const About = () => {
               <h3 className="text-xl font-bold text-white mb-4">Our Vision</h3>
               <p className="text-gray-300">
                 To be the premier provider of AI-powered software solutions and tech talent,
-                recognized globally for our innovation, expertise, and the measurable business
-                impact we create for our clients. We envision a world where technology enhances
-                human potential.
+                recognized globally for our innovation, expertise in Data Science, AI/ML, Full Stack, DevOps, and Microsoft Dynamics 365, 
+                and the measurable business impact we create for our clients.
               </p>
             </motion.div>
           </div>

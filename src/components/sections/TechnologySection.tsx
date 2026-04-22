@@ -2,15 +2,28 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Cpu, Zap } from "lucide-react";
-import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/swiper-bundle.css";
 
 const technologies = [
-  // Programming Languages & Frameworks
+  // Data Science & ML
   {
     name: "Python",
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318212/PythonLogo_aj1js1.jpg",
   },
+  {
+    name: "TensorFlow",
+    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318190/tensorflowlogo_mdbxbl.png",
+  },
+  {
+    name: "OpenAI",
+    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321377/open-ai-logo-png_seeklogo-428036_hp2wef.png",
+  },
+  {
+    name: "Pinecone",
+    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321377/pinecone-logo-png_seeklogo-482364_bp9dec.png",
+  },
+
+  // Full Stack - Backend
   {
     name: "Django",
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321376/djangologo_mhsy44.png",
@@ -23,24 +36,22 @@ const technologies = [
     name: "FastAPI",
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321376/fastapi-logo-png_seeklogo-499530_dyv5js.png",
   },
-  {
-    name: "Ruby",
-    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321377/ruby-logo-png_seeklogo-483173_hoof73.png",
-  },
 
-  // Frontend Technologies
+  // Full Stack - Frontend
   {
     name: "React",
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318223/reactlogo_dhip9x.webp",
   },
   {
-    name: "Next",
+    name: "Next.js",
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318195/NextLogo_tudqbn.png",
   },
   {
     name: "Vue",
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318171/VueLogo_gmrp0e.png",
   },
+
+  // Mobile Development
   {
     name: "React Native",
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321828/reactnative_vcftgu.png",
@@ -48,6 +59,28 @@ const technologies = [
   {
     name: "Flutter",
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321828/flutterlogo_ir4kg5.png",
+  },
+
+  // DevOps & Cloud
+  {
+    name: "Docker",
+    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318171/dockerLogo_xmdvjw.png",
+  },
+  {
+    name: "Kubernetes",
+    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318195/kubernetesLogo_zke3hc.png",
+  },
+  {
+    name: "AWS",
+    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318218/awslogo_onfroy.png",
+  },
+  {
+    name: "Azure",
+    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318227/azureLogo_topzlj.png",
+  },
+  {
+    name: "Google Cloud",
+    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318219/cloudLogo_lrh7v6.png",
   },
 
   // Databases
@@ -60,20 +93,6 @@ const technologies = [
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321376/mongodb-icon-logo-png_seeklogo-503274_ecbgcr.png",
   },
 
-  // AI & ML
-  {
-    name: "OpenAI",
-    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321377/open-ai-logo-png_seeklogo-428036_hp2wef.png",
-  },
-  {
-    name: "TensorFlow",
-    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318190/tensorflowlogo_mdbxbl.png",
-  },
-  {
-    name: "Pinecone",
-    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321377/pinecone-logo-png_seeklogo-482364_bp9dec.png",
-  },
-
   // Automation
   {
     name: "Zapier",
@@ -84,30 +103,8 @@ const technologies = [
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321377/N8n-logo-new.svg_b6ufcb.png",
   },
   {
-    name: "Make (Integromat)",
+    name: "Make",
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321376/make-logo-png_seeklogo-464017_hc6luf.png",
-  },
-
-  // Cloud Platforms & DevOps
-  {
-    name: "AWS",
-    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318218/awslogo_onfroy.png",
-  },
-  {
-    name: "Google Cloud",
-    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318219/cloudLogo_lrh7v6.png",
-  },
-  {
-    name: "Azure",
-    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318227/azureLogo_topzlj.png",
-  },
-  {
-    name: "Docker",
-    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318171/dockerLogo_xmdvjw.png",
-  },
-  {
-    name: "Kubernetes",
-    icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753318195/kubernetesLogo_zke3hc.png",
   },
 ];
 

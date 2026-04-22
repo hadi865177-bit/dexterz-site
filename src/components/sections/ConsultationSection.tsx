@@ -6,21 +6,21 @@ import { motion } from "framer-motion";
 const ConsultationSection = () => {
   const consultationServices = [
     {
-      title: "Strategic Innovation Roadmaps",
+      title: "Data Science & AI Strategy",
       description:
-        "Architecting technology paths that align with your business vision to ensure sustainable growth and long-term ROI.",
-      icon: <Compass />,
-    },
-    {
-      title: "AI & Automation Strategy",
-      description:
-        "Identifying high-impact opportunities for intelligent automation to streamline operations and unlock predictive insights.",
+        "Architecting long-term AI roadmaps that leverage data science to create predictive advantages and innovation-driven leadership.",
       icon: <Brain />,
     },
     {
-      title: "Enterprise Modernization",
+      title: "DevOps Transformation",
       description:
-        "Transforming legacy ecosystems into agile, digital-first operations that drive efficiency and global scalability.",
+        "Modernizing your delivery pipeline with high-availability CI/CD architecture and site reliability engineering for mission-critical apps.",
+      icon: <Zap />,
+    },
+    {
+      title: "Microsoft Dynamics Advisory",
+      description:
+        "Expert strategic guidance on Dynamics 365 implementation to unify enterprise operations and drive organizational efficiency.",
       icon: <Layers />,
     },
   ];
@@ -42,7 +42,7 @@ const ConsultationSection = () => {
             Technology <span className="text-brand-teal">Consultation</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Empowering businesses with long-term strategic clarity and innovation-driven leadership to navigate the complex digital landscape.
+            Strategic advisory services guiding enterprises through digital transformation with expertise in Data Science, AI/ML, DevOps, and Microsoft Dynamics 365.
           </p>
         </div>
 

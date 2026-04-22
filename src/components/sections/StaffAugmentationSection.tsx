@@ -6,18 +6,18 @@ import { motion } from "framer-motion";
 const StaffAugmentationSection = () => {
   const staffingFeatures = [
     {
-      title: "Embedded Engineering Squads",
-      description: "Dedicated development teams that fully integrate with your internal R&D, adopting your tools and delivery standards.",
+      title: "AI & Data Science Squads",
+      description: "Dedicated squads of data scientists and ML engineers who embed within your R&D for mission-critical AI innovation and intelligent automation.",
       icon: <Users />,
     },
     {
-      title: "Operational Synergy",
-      description: "Our experts sync perfectly with your communication channels and culture, operating with the same passion as your in-house team.",
+      title: "Full Stack & DevOps Integration",
+      description: "End-to-end engineering teams capable of managing complex architectures while automating CI/CD pipelines for rapid, reliable delivery.",
       icon: <Monitor />,
     },
     {
-      title: "Enterprise-Scale Capacity",
-      description: "Seamlessly scale your technical capabilities for high-stakes projects with pre-vetted domain specialists.",
+      title: "Microsoft Dynamics 365 Experts",
+      description: "Certified professionals providing strategic implementation and customization of Dynamics 365 CRM, ERP, and Power Platform ecosystems.",
       icon: <Globe />,
     },
   ];
@@ -38,7 +38,7 @@ const StaffAugmentationSection = () => {
             Staff <span className="text-brand-teal">Augmentation</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Integrating world-class engineering squads directly into your organization's core operations to drive mission-critical innovation.
+            Integrating world-class engineering squads directly into your organization's core operations to drive mission-critical innovation across Data Science, AI/ML, Full Stack, DevOps, and Microsoft Dynamics 365.
           </p>
         </div>
 

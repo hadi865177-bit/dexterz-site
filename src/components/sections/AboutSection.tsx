@@ -110,9 +110,9 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}>
-              At Dexterz Technologies, we're at the forefront of technological innovation, combining
-              cutting-edge AI solutions with exceptional software development and flexible talent
-              resources.
+              At Dexterz Technologies, we specialize in Data Science, AI/ML engineering, Full Stack development, 
+              DevOps automation, and Microsoft Dynamics 365 solutions—delivering transformative technology that 
+              drives measurable business outcomes.
             </motion.p>
 
             <motion.p
@@ -121,9 +121,9 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               viewport={{ once: true }}>
-              Our mission is to empower businesses through intelligent automation, custom software
-              solutions, and access to world-class technical talent—all designed to drive your
-              growth and success in the digital age.
+              Our mission is to empower enterprises through intelligent automation, predictive analytics, 
+              scalable cloud infrastructure, and world-class technical talent—all designed to accelerate 
+              your digital transformation.
             </motion.p>
 
             <motion.div

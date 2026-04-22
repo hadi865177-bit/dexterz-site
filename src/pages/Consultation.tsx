@@ -52,33 +52,33 @@ const ServiceFeature = ({ title, description, icon, delay = 0 }: ServiceFeatureP
 const Consultation = () => {
   const consultationServices = [
     {
-      title: "Strategic Innovation Roadmaps",
+      title: "Data Science & AI Strategy",
       description:
-        "Architecting long-term technology paths that align with your business vision, ensuring every investment creates a competitive advantage.",
-      icon: <Compass size={24} />,
-    },
-    {
-      title: "Enterprise Modernization",
-      description:
-        "Transforming legacy ecosystems into agile, digital-first operations that drive efficiency and enhance global scalability.",
-      icon: <Zap size={24} />,
-    },
-    {
-      title: "AI & Automation Strategy",
-      description:
-        "Identifying high-impact opportunities for intelligent automation to streamline complex workflows and unlock predictive insights.",
+        "Architecting long-term AI roadmaps that leverage data science to create predictive advantages and innovation-driven leadership.",
       icon: <Brain size={24} />,
     },
     {
-      title: "Scalable Systems Architecture",
+      title: "DevOps Transformation",
       description:
-        "Designing robust, secure, and future-ready technical frameworks that provide the foundation for sustainable business growth.",
+        "Modernizing your delivery pipeline with high-availability CI/CD architecture and site reliability engineering for mission-critical apps.",
+      icon: <Zap size={24} />,
+    },
+    {
+      title: "Microsoft Dynamics Advisory",
+      description:
+        "Expert strategic guidance on Dynamics 365 implementation to unify enterprise operations and drive organizational efficiency.",
+      icon: <Building2 size={24} />,
+    },
+    {
+      title: "Full Stack Systems Design",
+      description:
+        "Designing robust, secure, and future-ready technical frameworks that provide the foundation for scalable enterprise ecosystems.",
       icon: <Layers size={24} />,
     },
     {
-      title: "Product Lifecycle Discovery",
+      title: "MLOps & Data Governance",
       description:
-        "Comprehensive market research and technical validation to define strategic MVPs and long-term product evolution paths.",
+        "Comprehensive strategy for scaling machine learning models while ensuring data integrity, security, and enterprise compliance.",
       icon: <Search size={24} />,
     },
     {
@@ -154,8 +154,8 @@ const Consultation = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Empowering businesses with long-term strategic clarity and innovation-driven 
-              leadership to navigate the complex digital landscape and drive sustainable growth.
+              Guiding global enterprises through complex digital transformations with strategic technology 
+              leadership that aligns innovation with long-term business objectives.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -223,17 +223,17 @@ const Consultation = () => {
               </h2>
 
               <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-                Our Technology Consultation services provide businesses with the expert
-                guidance they need to navigate complex technology landscapes. Whether
-                you're planning a digital transformation, evaluating AI opportunities,
-                or designing a new product — our consultants bring deep domain expertise
-                and a results-driven approach.
+                Our Technology Consultation services provide enterprise-level organizations with the strategic
+                guidance needed to navigate complex technology landscapes. Whether planning large-scale 
+                digital transformations, evaluating AI opportunities for mission-critical systems, or designing 
+                next-generation products — our consultants bring deep domain expertise and a results-driven approach 
+                honed through partnerships with industry leaders.
               </p>
 
               <p className="text-lg text-gray-300 mb-8">
-                We don't just advise — we partner with your team to define actionable
-                strategies, validate ideas, and ensure every technology decision aligns
-                with your business goals and budget.
+                We don't just advise — we embed within your leadership team to co-create actionable
+                strategies, validate architectural decisions, and ensure every technology investment aligns
+                with your business goals, compliance requirements, and long-term scalability needs.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
