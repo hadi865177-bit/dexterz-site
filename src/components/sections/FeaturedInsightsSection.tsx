@@ -50,8 +50,7 @@ const FeaturedInsightsSection = () => {
                 Transform Business Across <span className="text-brand-teal"> AI Industries</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-xl">
-                Stay updated with our latest thoughts on technology, development, and industry
-                trends
+                Explore our latest insights on Data Science, AI/ML, Full Stack development, DevOps, and enterprise technology trends.
               </p>
 
               {/* <h3 className="text-2xl md:text-3xl font-normal text-gray-600">

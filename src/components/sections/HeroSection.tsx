@@ -42,17 +42,16 @@ const HeroSection = () => {
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-gray-800">
-                Accelerate Growth with <span className="text-brand-teal">AI Solutions </span> &{" "}
+                Accelerate Growth with <span className="text-brand-teal">AI Solutions</span> &{" "}
                 <span className="text-brand-teal">Expert Teams</span>
               </h1>
 
               <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed">
-                {/* <span className="text-gray-900 font-bold">Dexterz Technologies </span> */}
                 <HighlightedText highlightColor="#1ABC9C" className="font-bold text-brand-teal">
                   Dexterz Technologies
                 </HighlightedText>{" "}
-                transforms businesses with cutting-edge AI solutions, expert software development,
-                and flexible talent resources that drive growth and innovation.
+                transforms businesses with cutting-edge Data Science, AI/ML engineering, Full Stack development, 
+                DevOps automation, and Microsoft Dynamics 365 solutions that drive measurable results.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -87,14 +86,6 @@ const HeroSection = () => {
                     alt="AI Technology Dashboard"
                     className="w-full h-auto rounded-xl object-cover"
                   />
-                  {/* Alternative images you can use:
-                  https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1096
-                  1. AI Dashboard: https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-                  2. Modern Office: https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-                  3. Team Collaboration: https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-                  4. AI Brain Network: https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-                  5. Modern Workspace: https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-                  */}
                 </div>
               </div>
 
