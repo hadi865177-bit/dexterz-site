@@ -11,19 +11,57 @@ import {
   PenTool,
 } from "lucide-react";
 import PageLayout from "../components/layout/PageLayout";
-import { useState } from "react";
-import { BlogsList, type Blog } from "../data/blogs";
+import { useState, useEffect } from "react";
+import { supabase, Blog } from "@/lib/supabase";
+import { BlogsList } from "../data/blogs";
+import BrandedLoader from "../components/ui/BrandedLoader";
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
   const blogsPerPage = 6;
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const fetchBlogs = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('blogs')
+        .select('*')
+        .order('publish_date', { ascending: false });
+
+      if (error) throw error;
+      
+      if (data && data.length > 0) {
+        // Database has data - use it
+        const formattedBlogs = data.map(blog => ({
+          ...blog,
+          publishDate: blog.publish_date,
+          readTime: blog.read_time
+        }));
+        setBlogs(formattedBlogs);
+      } else {
+        // Database is empty - use static data
+        setBlogs(BlogsList as any);
+      }
+    } catch (error) {
+      console.log('Database not setup yet, using static blogs');
+      // Database not setup - use static data
+      setBlogs(BlogsList as any);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Calculate pagination
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-  const currentBlogs = BlogsList.slice(indexOfFirstBlog, indexOfLastBlog);
-  const totalPages = Math.ceil(BlogsList.length / blogsPerPage);
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -67,6 +105,13 @@ const Blogs = () => {
       {/* Blog Posts Grid */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
+          {loading ? (
+            <BrandedLoader message="Loading blogs..." />
+          ) : blogs.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600">No blogs found</p>
+            </div>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentBlogs.map((blog, index) => (
               <motion.div
@@ -92,7 +137,7 @@ const Blogs = () => {
                     </span>
                     <span className="text-xs text-gray-500 flex items-center">
                       <Clock size={12} className="mr-1" />
-                      {blog.readTime}
+                      {(blog as any).read_time || (blog as any).readTime}
                     </span>
                   </div>
 
@@ -121,7 +166,7 @@ const Blogs = () => {
                     </div>
                     <div className="flex items-center">
                       <Calendar size={14} className="mr-1" />
-                      {new Date(blog.publishDate).toLocaleDateString()}
+                      {new Date((blog as any).publish_date || (blog as any).publishDate).toLocaleDateString()}
                     </div>
                   </div>
 
@@ -134,6 +179,7 @@ const Blogs = () => {
               </motion.div>
             ))}
           </div>
+          )}
 
           {/* Enhanced Pagination */}
           {totalPages > 1 && (
@@ -208,8 +254,8 @@ const Blogs = () => {
             <div className="inline-flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-200">
               <PenTool className="h-4 w-4 text-gray-500" />
               <span className="text-sm text-gray-600">
-                Showing {indexOfFirstBlog + 1}-{Math.min(indexOfLastBlog, BlogsList.length)} of{" "}
-                {BlogsList.length} blogs
+                Showing {indexOfFirstBlog + 1}-{Math.min(indexOfLastBlog, blogs.length)} of{" "}
+                {blogs.length} blogs
               </span>
             </div>
           </div>

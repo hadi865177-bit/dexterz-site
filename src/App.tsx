@@ -23,6 +23,14 @@ import BlogDetail from "./pages/BlogDetail";
 import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
 import CustomCursor from "./components/ui/CustomCursor";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import BlogManagement from "./pages/admin/BlogManagement";
+import BlogForm from "./pages/admin/BlogForm";
+import CareerManagement from "./pages/admin/CareerManagement";
+import CareerForm from "./pages/admin/CareerForm";
 
 const queryClient = new QueryClient();
 
@@ -32,30 +40,43 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        {/* Custom Cursor */}
-        <CustomCursor />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/services/ai" element={<AIAndAutomation />} />
-          <Route path="/services/ai/integrations" element={<AIMLIntegrations />} />
-          <Route path="/services/ai/automation" element={<AIAutomationSolutions />} />
-          <Route path="/services/ai/chatbots" element={<ChatbotDevelopment />} />
-          <Route path="/services/ai/data-processing" element={<IntelligentDataProcessing />} />
-          <Route path="/services/staff-augmentation" element={<StaffAugmentation />} />
-          <Route path="/services/development" element={<SoftwareDevelopment />} />
-          <Route path="/services/mobile" element={<MobileDevelopment />} />
-          <Route path="/services/cloud" element={<CloudSolutions />} />
-          <Route path="/services/consultation" element={<Consultation />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route path="/careers" element={<Careers />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AuthProvider>
+          {/* Custom Cursor */}
+          <CustomCursor />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/services/ai" element={<AIAndAutomation />} />
+            <Route path="/services/ai/integrations" element={<AIMLIntegrations />} />
+            <Route path="/services/ai/automation" element={<AIAutomationSolutions />} />
+            <Route path="/services/ai/chatbots" element={<ChatbotDevelopment />} />
+            <Route path="/services/ai/data-processing" element={<IntelligentDataProcessing />} />
+            <Route path="/services/staff-augmentation" element={<StaffAugmentation />} />
+            <Route path="/services/development" element={<SoftwareDevelopment />} />
+            <Route path="/services/mobile" element={<MobileDevelopment />} />
+            <Route path="/services/cloud" element={<CloudSolutions />} />
+            <Route path="/services/consultation" element={<Consultation />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/careers" element={<Careers />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+            <Route path="/admin/blogs" element={<ProtectedRoute><BlogManagement /></ProtectedRoute>} />
+            <Route path="/admin/blogs/new" element={<ProtectedRoute><BlogForm /></ProtectedRoute>} />
+            <Route path="/admin/blogs/edit/:id" element={<ProtectedRoute><BlogForm /></ProtectedRoute>} />
+            <Route path="/admin/careers" element={<ProtectedRoute><CareerManagement /></ProtectedRoute>} />
+            <Route path="/admin/careers/new" element={<ProtectedRoute><CareerForm /></ProtectedRoute>} />
+            <Route path="/admin/careers/edit/:id" element={<ProtectedRoute><CareerForm /></ProtectedRoute>} />
+            
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
