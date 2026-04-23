@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { JOB_APPLICATION_EMAILJS_CONFIG } from "@/config/emailjs";
 import { uploadFileToSupabase } from "@/services/fileUpload";
@@ -40,6 +40,8 @@ import {
   User,
   Mail,
 } from "lucide-react";
+import { supabase, Career } from "@/lib/supabase";
+import BrandedLoader from "@/components/ui/BrandedLoader";
 
 interface JobPosition {
   id: string;
@@ -62,7 +64,6 @@ interface ApplicationForm {
 }
 
 const Careers = () => {
-  // Initialize EmailJS
   emailjs.init(JOB_APPLICATION_EMAILJS_CONFIG.PUBLIC_KEY);
 
   const { toast } = useToast();
@@ -73,6 +74,8 @@ const Careers = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDragOver, setIsDragOver] = useState(false);
   const [cvError, setCvError] = useState<string>("");
+  const [jobPositions, setJobPositions] = useState<JobPosition[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const [applicationForm, setApplicationForm] = useState<ApplicationForm>({
     name: "",
@@ -81,7 +84,7 @@ const Careers = () => {
     cv: null,
   });
 
-  const jobPositions: JobPosition[] = [
+  const staticJobPositions: JobPosition[] = [
     {
       id: "2",
       title: "AI/ML Engineer",
@@ -181,6 +184,46 @@ const Careers = () => {
       isOpen: true,
     },
   ];
+
+  useEffect(() => {
+    fetchCareers();
+  }, []);
+
+  const fetchCareers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('careers')
+        .select('*')
+        .eq('is_active', true)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      
+      if (data && data.length > 0) {
+        const formattedCareers = data.map(career => ({
+          id: career.id,
+          title: career.title,
+          department: career.department,
+          location: career.location,
+          type: career.type,
+          experience: career.experience,
+          description: career.description,
+          requirements: career.requirements,
+          benefits: career.benefits,
+          isOpen: career.is_active
+        }));
+        setJobPositions(formattedCareers);
+      } else {
+        setJobPositions(staticJobPositions);
+      }
+    } catch (error) {
+      console.log('Database not setup yet, using static careers');
+      setJobPositions(staticJobPositions);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   const companyValues = [
     {
       icon: <Heart className="h-8 w-8 text-brand-teal" />,
@@ -585,6 +628,11 @@ const Careers = () => {
       </section>
 
       {/* Open Positions Section - Light */}
+      {loading ? (
+        <section className="py-20 bg-gray-100">
+          <BrandedLoader message="LOADING CAREERS..." />
+        </section>
+      ) : (
       <section id="open-positions" className="py-20 bg-gray-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -663,6 +711,7 @@ const Careers = () => {
           )}
         </div>
       </section>
+      )}
 
       {/* CTA Section - Dark */}
       <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
