@@ -4,11 +4,14 @@ import { supabase, Blog } from '@/lib/supabase';
 import { Plus, Edit, Trash2, Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BrandedLoader from '@/components/ui/BrandedLoader';
+import DeleteModal from '@/components/ui/DeleteModal';
 
 const BlogManagement = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [blogToDelete, setBlogToDelete] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,12 +35,18 @@ const BlogManagement = () => {
   };
 
   const deleteBlog = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this blog?')) return;
+    setBlogToDelete(id);
+    setDeleteModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!blogToDelete) return;
 
     try {
-      const { error } = await supabase.from('blogs').delete().eq('id', id);
+      const { error } = await supabase.from('blogs').delete().eq('id', blogToDelete);
       if (error) throw error;
-      setBlogs(blogs.filter((blog) => blog.id !== id));
+      setBlogs(blogs.filter((blog) => blog.id !== blogToDelete));
+      setBlogToDelete(null);
     } catch (error) {
       console.error('Error deleting blog:', error);
       alert('Failed to delete blog');
@@ -139,6 +148,14 @@ const BlogManagement = () => {
           )}
         </div>
       </div>
+
+      <DeleteModal
+        isOpen={deleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirm={confirmDelete}
+        title="Delete Blog"
+        message="Are you sure you want to delete this blog? This action cannot be undone."
+      />
     </AdminLayout>
   );
 };

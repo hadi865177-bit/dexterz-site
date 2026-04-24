@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { supabase, Blog } from "@/lib/supabase";
 import { BlogsList } from "../data/blogs";
 import BrandedLoader from "../components/ui/BrandedLoader";
+import { generateSlug } from "@/utils/slugify";
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -116,7 +117,7 @@ const Blogs = () => {
             {currentBlogs.map((blog, index) => (
               <motion.div
                 key={blog.id}
-                onClick={() => navigate(`/blog/${blog.id}`)}
+                onClick={() => navigate(`/${generateSlug(blog.title)}`)}
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-100 hover:border-brand-teal/30 group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -171,7 +172,7 @@ const Blogs = () => {
                   </div>
 
                   <Link
-                    to={`/blog/${blog.id}`}
+                    to={`/${generateSlug(blog.title)}`}
                     className="inline-flex items-center text-brand-teal hover:text-brand-teal/80 font-medium group-hover:translate-x-1 transition-all duration-300">
                     Read More <ArrowRight size={16} className="ml-1" />
                   </Link>

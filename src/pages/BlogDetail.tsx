@@ -19,40 +19,42 @@ import { BlogsList, type Blog } from "../data/blogs";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import BrandedLoader from "../components/ui/BrandedLoader";
+import { generateSlug, getBlogIdFromSlug } from "@/utils/slugify";
 
 const BlogDetail = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [blog, setBlog] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [allBlogs, setAllBlogs] = useState<any[]>([]);
 
   useEffect(() => {
-    fetchBlog();
-  }, [id]);
+    fetchBlogs();
+  }, [slug]);
 
-  const fetchBlog = async () => {
+  const fetchBlogs = async () => {
     try {
       const { data, error } = await supabase
         .from('blogs')
-        .select('*')
-        .eq('id', id)
-        .single();
+        .select('*');
 
       if (error) throw error;
       
-      if (data) {
-        setBlog({
-          ...data,
-          publishDate: data.publish_date,
-          readTime: data.read_time
-        });
-      } else {
-        const staticBlog = BlogsList.find((b) => b.id === id);
-        setBlog(staticBlog);
+      if (data && data.length > 0) {
+        setAllBlogs(data);
+        // Find blog by matching slug with title
+        const foundBlog = data.find(b => generateSlug(b.title) === slug);
+        
+        if (foundBlog) {
+          setBlog({
+            ...foundBlog,
+            publishDate: foundBlog.publish_date,
+            readTime: foundBlog.read_time
+          });
+        }
       }
     } catch (error) {
-      const staticBlog = BlogsList.find((b) => b.id === id);
-      setBlog(staticBlog);
+      console.error('Error fetching blog:', error);
     } finally {
       setLoading(false);
     }
@@ -318,7 +320,7 @@ const BlogDetail = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {BlogsList.filter((b) => b.id !== blog.id && b.category === blog.category)
+              {allBlogs.filter((b) => generateSlug(b.title) !== slug && b.category === blog.category)
                 .slice(0, 3)
                 .map((relatedBlog, index) => (
                   <motion.div
@@ -343,7 +345,7 @@ const BlogDetail = () => {
                         {relatedBlog.excerpt}
                       </p>
                       <Link
-                        to={`/blog/${relatedBlog.id}`}
+                        to={`/${generateSlug(relatedBlog.title)}`}
                         className="inline-flex items-center text-brand-teal hover:text-brand-teal/80 font-medium group-hover:translate-x-1 transition-all duration-300">
                         Read More <ArrowRight size={16} className="ml-1" />
                       </Link>

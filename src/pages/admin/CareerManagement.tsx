@@ -4,11 +4,14 @@ import { supabase, Career } from '@/lib/supabase';
 import { Plus, Edit, Trash2, Search, Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BrandedLoader from '@/components/ui/BrandedLoader';
+import DeleteModal from '@/components/ui/DeleteModal';
 
 const CareerManagement = () => {
   const [careers, setCareers] = useState<Career[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [careerToDelete, setCareerToDelete] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,12 +35,18 @@ const CareerManagement = () => {
   };
 
   const deleteCareer = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this career?')) return;
+    setCareerToDelete(id);
+    setDeleteModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!careerToDelete) return;
 
     try {
-      const { error } = await supabase.from('careers').delete().eq('id', id);
+      const { error } = await supabase.from('careers').delete().eq('id', careerToDelete);
       if (error) throw error;
-      setCareers(careers.filter((career) => career.id !== id));
+      setCareers(careers.filter((career) => career.id !== careerToDelete));
+      setCareerToDelete(null);
     } catch (error) {
       console.error('Error deleting career:', error);
       alert('Failed to delete career');
@@ -179,6 +188,14 @@ const CareerManagement = () => {
           )}
         </div>
       </div>
+
+      <DeleteModal
+        isOpen={deleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirm={confirmDelete}
+        title="Delete Career"
+        message="Are you sure you want to delete this job posting? This action cannot be undone."
+      />
     </AdminLayout>
   );
 };
