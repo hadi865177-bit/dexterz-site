@@ -50,8 +50,9 @@ const HeroSection = () => {
                 <HighlightedText highlightColor="#1ABC9C" className="font-bold text-brand-teal">
                   Dexterz Technologies
                 </HighlightedText>{" "}
-                transforms businesses with cutting-edge Data Science, AI/ML engineering, Full Stack development, 
-                DevOps automation, and Microsoft Dynamics 365 solutions that drive measurable results.
+                transforms businesses with cutting-edge AI/ML solutions, intelligent chatbots, RAG systems, 
+                LangChain integrations, Full Stack development, cloud automation, and Microsoft Dynamics 365 
+                solutions that drive measurable results.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
