@@ -266,7 +266,7 @@ const StaffAugmentation = () => {
                 extension of your in-house departments. 
               </p>
 
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-400 mb-8">
                 By aligning with your internal SDLC, communication protocols, and cultural values, 
                 we ensure that our teams operate with the same passion and focus as your own 
                 full-time employees. This deep integration allows us to handle high-stakes, 
