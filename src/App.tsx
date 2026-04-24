@@ -60,7 +60,7 @@ const App = () => (
             <Route path="/services/cloud" element={<CloudSolutions />} />
             <Route path="/services/consultation" element={<Consultation />} />
             <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/:slug" element={<BlogDetail />} />
             <Route path="/careers" element={<Careers />} />
             
             {/* Admin Routes */}
