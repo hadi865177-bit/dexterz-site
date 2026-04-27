@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AdminLayout from '@/components/layout/AdminLayout';
 import { supabase } from '@/lib/supabase';
-import { FileText, Briefcase, TrendingUp, Activity, Database, Server } from 'lucide-react';
+import { FileText, Briefcase, TrendingUp, Activity, Database, Server, Users } from 'lucide-react';
 import BrandedLoader from '@/components/ui/BrandedLoader';
 
 const AdminDashboard = () => {
@@ -10,6 +10,7 @@ const AdminDashboard = () => {
     totalBlogs: 0,
     totalCareers: 0,
     activeCareers: 0,
+    totalApplications: 0,
   });
   const [loading, setLoading] = useState(true);
 
@@ -19,16 +20,18 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const [blogsResult, careersResult, activeCareersResult] = await Promise.all([
+      const [blogsResult, careersResult, activeCareersResult, applicationsResult] = await Promise.all([
         supabase.from('blogs').select('id', { count: 'exact', head: true }),
         supabase.from('careers').select('id', { count: 'exact', head: true }),
         supabase.from('careers').select('id', { count: 'exact', head: true }).eq('is_active', true),
+        supabase.from('job_applications').select('id', { count: 'exact', head: true }),
       ]);
 
       setStats({
         totalBlogs: blogsResult.count || 0,
         totalCareers: careersResult.count || 0,
         activeCareers: activeCareersResult.count || 0,
+        totalApplications: applicationsResult.count || 0,
       });
     } catch (error) {
       console.error('Error fetching stats:', error);
@@ -59,6 +62,13 @@ const AdminDashboard = () => {
       gradient: 'from-purple-500 to-pink-600',
       link: '/admin/careers',
     },
+    {
+      title: 'Applications',
+      value: stats.totalApplications,
+      icon: Users,
+      gradient: 'from-orange-500 to-red-600',
+      link: '/admin/applications',
+    },
   ];
 
   return (
@@ -68,7 +78,7 @@ const AdminDashboard = () => {
       ) : (
         <div className="space-y-6">
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {statCards.map((card) => {
               const Icon = card.icon;
               return (

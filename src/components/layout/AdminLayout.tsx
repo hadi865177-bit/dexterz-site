@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { LogOut, FileText, Briefcase, LayoutDashboard, Menu, X, Globe, User } from 'lucide-react';
+import { LogOut, FileText, Briefcase, LayoutDashboard, Menu, X, Globe, User, Users } from 'lucide-react';
 import { useState } from 'react';
 
 interface AdminLayoutProps {
@@ -23,6 +23,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     { path: '/admin/dashboard', label: 'DASHBOARD', icon: LayoutDashboard },
     { path: '/admin/blogs', label: 'BLOGS', icon: FileText },
     { path: '/admin/careers', label: 'CAREERS', icon: Briefcase },
+    { path: '/admin/applications', label: 'APPLICATIONS', icon: Users },
   ];
 
   return (

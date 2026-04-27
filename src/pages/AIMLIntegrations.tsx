@@ -485,7 +485,7 @@ const AIMLIntegrations = () => {
 
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Ready to Integrate{" "}
-              <span className="bg-gradient-to-r from-brand-teal to-brand-navy bg-clip-text text-transparent">
+              <span className="text-brand-teal">
                 AI & ML
               </span>{" "}
               into Your Systems?

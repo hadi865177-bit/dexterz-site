@@ -14,4 +14,7 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },   
   },
+  optimizeDeps: {
+    include: ['@aws-sdk/client-s3', '@aws-sdk/s3-request-presigner'],
+  },
 }));

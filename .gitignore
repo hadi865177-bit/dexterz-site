@@ -12,6 +12,18 @@ dist
 dist-ssr
 *.local
 
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# SQL setup files (already executed)
+*.sql
+
+# Temporary setup files
+cors-config.json
+set-cors.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

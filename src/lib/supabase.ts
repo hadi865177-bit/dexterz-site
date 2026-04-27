@@ -38,3 +38,16 @@ export interface Career {
   created_at?: string;
   updated_at?: string;
 }
+
+export interface JobApplication {
+  id: string;
+  name: string;
+  email: string;
+  job_position: string;
+  cv_url: string;
+  cv_filename: string;
+  cv_size?: string;
+  status: 'pending' | 'reviewed' | 'shortlisted' | 'rejected';
+  created_at?: string;
+  updated_at?: string;
+}

@@ -10,6 +10,12 @@ import { EMAILJS_CONFIG } from "@/config/emailjs";
 const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({
+    full_name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
@@ -25,16 +31,39 @@ const ContactSection = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof typeof errors]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate required fields
-    if (!formData.full_name || !formData.email || !formData.subject || !formData.message) {
+    const newErrors = {
+      full_name: "",
+      email: "",
+      subject: "",
+      message: "",
+    };
+
+    if (!formData.full_name.trim()) {
+      newErrors.full_name = "Full name is required";
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "Email address is required";
+    }
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    }
+
+    if (newErrors.full_name || newErrors.email || newErrors.subject || newErrors.message) {
+      setErrors(newErrors);
       toast({
         title: "Validation Error",
-        description: "Please fill in all required fields (Name, Email, Subject, Message).",
+        description: "Please fill in all required fields.",
         variant: "destructive",
       });
       return;
@@ -76,6 +105,12 @@ const ContactSection = () => {
         subject: "",
         message: "",
         service: "AI & Automation",
+      });
+      setErrors({
+        full_name: "",
+        email: "",
+        subject: "",
+        message: "",
       });
     } catch (error) {
       console.error("Error sending email:", error);
@@ -136,9 +171,9 @@ const ContactSection = () => {
                     <div>
                       <p className="text-brand-teal mb-1 font-medium">Phone</p>
                       <a
-                        href="tel:+13322523899"
+                        href="tel:+19452007124"
                         className="text-gray-300 hover:text-white transition-colors">
-                        +1 (332) 252-3899
+                        +1 (945) 200-7124
                       </a>
                     </div>
                   </div>
@@ -160,7 +195,7 @@ const ContactSection = () => {
                     <div>
                       <p className="text-brand-teal mb-1 font-medium">Working Hours</p>
                       <p className="text-gray-300">
-                        Monday - Friday: 5PM - 2AM
+                        Monday - Friday: 9AM - 6PM EST
                         <br />
                         Saturday - Sunday: Closed
                       </p>
@@ -236,9 +271,11 @@ const ContactSection = () => {
                         value={formData.full_name}
                         onChange={handleChange}
                         placeholder="Your name"
-                        required
-                        className="border-gray-200 focus:border-brand-teal focus:ring-brand-teal/20"
+                        className={`border-gray-200 focus:border-brand-teal focus:ring-brand-teal/20 ${errors.full_name ? 'border-red-500' : ''}`}
                       />
+                      {errors.full_name && (
+                        <p className="text-sm text-red-500 mt-1">{errors.full_name}</p>
+                      )}
                     </div>
 
                     <div className="space-y-2">
@@ -252,9 +289,11 @@ const ContactSection = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="your.email@example.com"
-                        required
-                        className="border-gray-200 focus:border-brand-teal focus:ring-brand-teal/20"
+                        className={`border-gray-200 focus:border-brand-teal focus:ring-brand-teal/20 ${errors.email ? 'border-red-500' : ''}`}
                       />
+                      {errors.email && (
+                        <p className="text-sm text-red-500 mt-1">{errors.email}</p>
+                      )}
                     </div>
                   </div>
 
@@ -299,9 +338,11 @@ const ContactSection = () => {
                         value={formData.subject}
                         onChange={handleChange}
                         placeholder="How can we help?"
-                        required
-                        className="border-gray-200 focus:border-brand-teal focus:ring-brand-teal/20"
+                        className={`border-gray-200 focus:border-brand-teal focus:ring-brand-teal/20 ${errors.subject ? 'border-red-500' : ''}`}
                       />
+                      {errors.subject && (
+                        <p className="text-sm text-red-500 mt-1">{errors.subject}</p>
+                      )}
                     </div>
 
                     <div className="space-y-2">
@@ -335,9 +376,11 @@ const ContactSection = () => {
                       onChange={handleChange}
                       placeholder="Please tell us how we can help you..."
                       rows={5}
-                      required
-                      className="border-gray-200 focus:border-brand-teal focus:ring-brand-teal/20 resize-none"
+                      className={`border-gray-200 focus:border-brand-teal focus:ring-brand-teal/20 resize-none ${errors.message ? 'border-red-500' : ''}`}
                     />
+                    {errors.message && (
+                      <p className="text-sm text-red-500 mt-1">{errors.message}</p>
+                    )}
                   </div>
 
                   <Button

@@ -29,13 +29,7 @@ const Navbar = () => {
   };
 
   const handleGetInTouch = () => {
-    if (location.pathname === "/") {
-      // If on home page, scroll to contact section
-      scrollToContact();
-    } else {
-      // If on other pages, navigate to contact page
-      navigate("/contact");
-    }
+    navigate("/contact");
   };
 
   const navLinks = [
@@ -52,18 +46,18 @@ const Navbar = () => {
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-sm shadow-md" : "bg-transparent"
         }`}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center space-x-2 py-1">
           {isScrolled ? (
             <img
               src="/assets/new-logo/logo-blue.png"
               alt="Dexterz Technologies Logo"
-              className="h-8 md:h-10"
+              className="h-8 md:h-10 object-contain"
             />
           ) : (
             <img
               src="/assets/new-logo/logo-blue.png"
               alt="Dexterz Technologies Logo"
-              className="h-8 md:h-10"
+              className="h-8 md:h-10 object-contain"
             />
           )}
         </Link>
@@ -74,7 +68,11 @@ const Navbar = () => {
             <Link
               key={link.name}
               to={link.path}
-              className="font-medium text-gray-700 hover:text-brand-teal transition-colors">
+              className={`font-medium transition-colors ${
+                location.pathname === link.path
+                  ? "text-brand-teal font-semibold"
+                  : "text-gray-700 hover:text-brand-teal"
+              }`}>
               {link.name}
             </Link>
           ))}
@@ -101,7 +99,11 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="font-medium text-gray-700 hover:text-brand-teal transition-colors py-2 border-b border-gray-100"
+                className={`font-medium transition-colors py-2 border-b border-gray-100 ${
+                  location.pathname === link.path
+                    ? "text-brand-teal font-semibold"
+                    : "text-gray-700 hover:text-brand-teal"
+                }`}
                 onClick={() => setIsMenuOpen(false)}>
                 {link.name}
               </Link>
