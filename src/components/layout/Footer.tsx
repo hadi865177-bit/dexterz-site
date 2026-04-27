@@ -186,11 +186,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <User size={16} className="mr-2 text-brand-teal" />
-                <button
-                  onClick={scrollToContact}
-                  className="text-gray-300 hover:text-brand-teal transition-colors text-left">
+                <Link
+                  to="/contact"
+                  className="text-gray-300 hover:text-brand-teal transition-colors">
                   Contact Us
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -207,9 +207,9 @@ const Footer = () => {
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 text-brand-teal" />
                 <a
-                  href="tel:+13322523899"
+                  href="tel:+19452007124"
                   className="text-gray-300 hover:text-brand-teal transition-colors">
-                  +1 (332) 252-3899
+                  +1 (945) 200-7124
                 </a>
               </li>
               <li className="flex items-center">
@@ -222,7 +222,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Clock size={18} className="mr-2 text-brand-teal" />
-                <span className="text-gray-300">Mon-Fri: 9AM-6PM EST</span>
+                <span className="text-gray-300">Mon-Fri: 9AM-6PM EST<br />Sat-Sun: Closed</span>
               </li>
             </ul>
           </div>
@@ -231,7 +231,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex justify-center items-center">
             <p className="text-gray-400 text-sm text-center">
-              © {new Date().getFullYear()} · Powered by Dexterz Technologies (Pvt) Limited
+              © {new Date().getFullYear()} · Powered by Dexterz Technologies LLC
             </p>
           </div>
         </div>

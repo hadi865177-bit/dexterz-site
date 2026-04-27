@@ -50,10 +50,10 @@ const ServiceItem = ({ title, description, icon, link, color, delay = 0 }: Servi
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
       whileHover={{ y: -8 }}
-      className="group">
+      className="group h-full">
       <Link
         to={link}
-        className="block bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-teal/20 relative overflow-hidden">
+        className="flex flex-col h-full bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-brand-teal/20 relative overflow-hidden">
         {/* Background gradient on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -65,9 +65,9 @@ const ServiceItem = ({ title, description, icon, link, color, delay = 0 }: Servi
         <h3 className="relative z-10 text-xl font-bold text-brand-navy mb-3 group-hover:text-brand-teal transition-colors duration-300">
           {title}
         </h3>
-        <p className="relative z-10 text-gray-600 mb-6 leading-relaxed">{description}</p>
+        <p className="relative z-10 text-gray-600 mb-6 leading-relaxed flex-grow">{description}</p>
 
-        <div className="relative z-10 flex items-center text-brand-teal font-semibold group-hover:text-brand-navy transition-colors duration-300">
+        <div className="relative z-10 flex items-center text-brand-teal font-semibold group-hover:text-brand-navy transition-colors duration-300 mt-auto">
           Learn more{" "}
           <ArrowRight
             size={18}
@@ -433,10 +433,10 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -8 }}
-                className="group">
+                className="group h-full">
                 <Link
                   to={service.link}
-                  className="block bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-brand-teal/30 relative overflow-hidden">
+                  className="flex flex-col h-full bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-brand-teal/30 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   <div className="relative z-10 w-16 h-16 bg-gradient-to-br from-brand-teal/20 to-brand-teal/30 text-brand-teal rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-teal group-hover:text-white transition-all duration-500">
@@ -446,11 +446,11 @@ const Services = () => {
                   <h3 className="relative z-10 text-xl font-bold text-white mb-3 group-hover:text-brand-teal transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="relative z-10 text-gray-300 mb-6 leading-relaxed">
+                  <p className="relative z-10 text-gray-300 mb-6 leading-relaxed flex-grow">
                     {service.description}
                   </p>
 
-                  <div className="relative z-10 flex items-center text-brand-teal font-semibold group-hover:text-white transition-colors duration-300">
+                  <div className="relative z-10 flex items-center text-brand-teal font-semibold group-hover:text-white transition-colors duration-300 mt-auto">
                     Learn more{" "}
                     <ArrowRight
                       size={18}
@@ -559,10 +559,10 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -8 }}
-                className="group">
+                className="group h-full">
                 <Link
                   to={service.link}
-                  className="block bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-brand-teal/30 relative overflow-hidden">
+                  className="flex flex-col h-full bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-brand-teal/30 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   <div className="relative z-10 w-16 h-16 bg-gradient-to-br from-brand-teal/20 to-brand-teal/30 text-brand-teal rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-teal group-hover:text-white transition-all duration-500">
@@ -572,11 +572,11 @@ const Services = () => {
                   <h3 className="relative z-10 text-xl font-bold text-white mb-3 group-hover:text-brand-teal transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="relative z-10 text-gray-300 mb-6 leading-relaxed">
+                  <p className="relative z-10 text-gray-300 mb-6 leading-relaxed flex-grow">
                     {service.description}
                   </p>
 
-                  <div className="relative z-10 flex items-center text-brand-teal font-semibold group-hover:text-white transition-colors duration-300">
+                  <div className="relative z-10 flex items-center text-brand-teal font-semibold group-hover:text-white transition-colors duration-300 mt-auto">
                     Learn more{" "}
                     <ArrowRight
                       size={18}
@@ -706,10 +706,10 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -8 }}
-                className="group">
+                className="group h-full">
                 <Link
                   to="/services/consultation"
-                  className="block bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-brand-teal/30 relative overflow-hidden">
+                  className="flex flex-col h-full bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-brand-teal/30 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   <div className="relative z-10 w-16 h-16 bg-gradient-to-br from-brand-teal/20 to-brand-teal/30 text-brand-teal rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-teal group-hover:text-white transition-all duration-500">
@@ -719,11 +719,11 @@ const Services = () => {
                   <h3 className="relative z-10 text-xl font-bold text-white mb-3 group-hover:text-brand-teal transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="relative z-10 text-gray-300 mb-6 leading-relaxed">
+                  <p className="relative z-10 text-gray-300 mb-6 leading-relaxed flex-grow">
                     {service.description}
                   </p>
 
-                  <div className="relative z-10 flex items-center text-brand-teal font-semibold group-hover:text-white transition-colors duration-300">
+                  <div className="relative z-10 flex items-center text-brand-teal font-semibold group-hover:text-white transition-colors duration-300 mt-auto">
                     Learn more{" "}
                     <ArrowRight
                       size={18}

@@ -30,10 +30,26 @@
 
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_CONFIG } from "@/config/supabase";
+import { AWS_S3_CONFIG } from "@/config/aws";
+import { uploadFileToS3 } from "./s3Upload";
 
 const supabase = createClient(SUPABASE_CONFIG.URL, SUPABASE_CONFIG.ANON_KEY);
 
-export const uploadFileToSupabase = async (file: File): Promise<string> => {
+/**
+ * Upload file to storage (S3 or Supabase based on configuration)
+ * @param file - File to upload
+ * @param folder - Optional folder path (only used for S3)
+ * @returns Promise<string> - Public URL of uploaded file
+ */
+export const uploadFileToSupabase = async (file: File, folder: string = 'cvs'): Promise<string> => {
+  // Use S3 if enabled, otherwise fallback to Supabase
+  if (AWS_S3_CONFIG.USE_S3) {
+    console.log('Using AWS S3 for file upload');
+    return await uploadFileToS3(file, folder);
+  }
+
+  // Fallback to Supabase storage
+  console.log('Using Supabase for file upload');
   const fileName = `${Date.now()}_${file.name}`;
 
   console.log("Upload attempt:", {

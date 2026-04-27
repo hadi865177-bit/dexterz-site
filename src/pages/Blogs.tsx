@@ -84,7 +84,7 @@ const Blogs = () => {
               <span className="text-sm font-medium">Insights & Updates</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-brand-teal/90 to-white bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 pb-4 bg-gradient-to-r from-white via-brand-teal/90 to-white bg-clip-text text-transparent">
               Our Blog
             </h1>
 
@@ -109,8 +109,16 @@ const Blogs = () => {
           {loading ? (
             <BrandedLoader message="Loading blogs..." />
           ) : blogs.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-gray-600">No blogs found</p>
+            <div className="text-center py-16">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-teal/10 rounded-full mb-6">
+                <BookOpen className="h-10 w-10 text-brand-teal" />
+              </div>
+              <h3 className="text-2xl font-bold text-brand-navy mb-4">
+                No Blogs Available
+              </h3>
+              <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+                We haven't published any blogs yet. Check back soon for insights, tutorials, and industry perspectives from our team.
+              </p>
             </div>
           ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

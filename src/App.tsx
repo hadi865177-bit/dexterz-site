@@ -31,6 +31,7 @@ import BlogManagement from "./pages/admin/BlogManagement";
 import BlogForm from "./pages/admin/BlogForm";
 import CareerManagement from "./pages/admin/CareerManagement";
 import CareerForm from "./pages/admin/CareerForm";
+import JobApplicationsAdmin from "./pages/admin/JobApplicationsAdmin";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ const App = () => (
             <Route path="/admin/careers" element={<ProtectedRoute><CareerManagement /></ProtectedRoute>} />
             <Route path="/admin/careers/new" element={<ProtectedRoute><CareerForm /></ProtectedRoute>} />
             <Route path="/admin/careers/edit/:id" element={<ProtectedRoute><CareerForm /></ProtectedRoute>} />
+            <Route path="/admin/applications" element={<ProtectedRoute><JobApplicationsAdmin /></ProtectedRoute>} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

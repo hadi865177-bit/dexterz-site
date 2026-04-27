@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import emailjs from "@emailjs/browser";
-import { JOB_APPLICATION_EMAILJS_CONFIG } from "@/config/emailjs";
 import { uploadFileToSupabase } from "@/services/fileUpload";
 import { useToast } from "@/hooks/use-toast";
 import PageLayout from "@/components/layout/PageLayout";
@@ -64,8 +62,6 @@ interface ApplicationForm {
 }
 
 const Careers = () => {
-  emailjs.init(JOB_APPLICATION_EMAILJS_CONFIG.PUBLIC_KEY);
-
   const { toast } = useToast();
 
   const [selectedJob, setSelectedJob] = useState<JobPosition | null>(null);
@@ -214,7 +210,7 @@ const Careers = () => {
         }));
         setJobPositions(formattedCareers);
       } else {
-        setJobPositions(staticJobPositions);
+        setJobPositions([]);
       }
     } catch (error) {
       console.log('Database not setup yet, using static careers');
@@ -279,14 +275,21 @@ const Careers = () => {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       ];
 
-      if (validTypes.includes(file.type)) {
-        setApplicationForm((prev) => ({ ...prev, cv: file }));
-        setCvError("");
-        console.log("File selected:", file);
-      } else {
+      const maxSize = 5 * 1024 * 1024; // 5 MB in bytes
+
+      if (!validTypes.includes(file.type)) {
         setCvError("Please select a valid file type (.pdf, .doc, .docx)");
         setApplicationForm((prev) => ({ ...prev, cv: null }));
+      } else if (file.size > maxSize) {
+        setCvError("File size must be less than 5 MB");
+        setApplicationForm((prev) => ({ ...prev, cv: null }));
+      } else {
+        setApplicationForm((prev) => ({ ...prev, cv: file }));
+        setCvError("");
       }
+    } else {
+      setApplicationForm((prev) => ({ ...prev, cv: null }));
+      setCvError("");
     }
   };
 
@@ -318,12 +321,17 @@ const Careers = () => {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       ];
 
-      if (validTypes.includes(file.type)) {
-        setApplicationForm((prev) => ({ ...prev, cv: file }));
-        setCvError("");
-      } else {
+      const maxSize = 5 * 1024 * 1024; // 5 MB in bytes
+
+      if (!validTypes.includes(file.type)) {
         setCvError("Please select a valid file type (.pdf, .doc, .docx)");
         setApplicationForm((prev) => ({ ...prev, cv: null }));
+      } else if (file.size > maxSize) {
+        setCvError("File size must be less than 5 MB");
+        setApplicationForm((prev) => ({ ...prev, cv: null }));
+      } else {
+        setApplicationForm((prev) => ({ ...prev, cv: file }));
+        setCvError("");
       }
     }
   };
@@ -382,38 +390,43 @@ const Careers = () => {
       // Validate required fields
       if (!applicationForm.name || !applicationForm.email || !applicationForm.cv) {
         const errorMsg = "Please fill in all required fields and upload your CV.";
+        if (!applicationForm.cv) {
+          setCvError("Please upload your CV/Resume");
+        }
         toast({
           title: "Validation Error",
           description: errorMsg,
           variant: "destructive",
         });
+        setIsSubmitting(false);
         return;
       }
 
-      // Upload CV file to Supabase storage
+      // Upload CV file to S3
       const fileUrl = await uploadFileToSupabase(applicationForm.cv);
 
-      // Prepare EmailJS template parameters
-      const templateParams = {
-        to_name: "HR Team",
-        from_name: applicationForm.name,
-        from_email: applicationForm.email,
-        job_position: applicationForm.jobPosition,
-        cv_filename: applicationForm.cv.name,
-        cv_size: `${(applicationForm.cv.size / 1024 / 1024).toFixed(2)} MB`,
-        cv_download_url: fileUrl,
-        time: new Date().toLocaleString(), // optional: display time in email template
-      };
+      // Save application to Supabase database
+      const { data, error } = await supabase
+        .from('job_applications')
+        .insert([
+          {
+            name: applicationForm.name,
+            email: applicationForm.email,
+            job_position: applicationForm.jobPosition,
+            cv_url: fileUrl,
+            cv_filename: applicationForm.cv.name,
+            cv_size: `${(applicationForm.cv.size / 1024 / 1024).toFixed(2)} MB`,
+            status: 'pending',
+          },
+        ])
+        .select();
 
-      // Send email using EmailJS
-      const result = await emailjs.send(
-        JOB_APPLICATION_EMAILJS_CONFIG.SERVICE_ID,
-        JOB_APPLICATION_EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        JOB_APPLICATION_EMAILJS_CONFIG.PUBLIC_KEY
-      );
+      if (error) {
+        console.error('Database error:', error);
+        throw new Error('Failed to save application');
+      }
 
-      console.log("Application email sent successfully:", result);
+      console.log('Application saved successfully:', data);
 
       // Reset form and close modal
       setApplicationForm({
@@ -426,18 +439,16 @@ const Careers = () => {
       setIsApplicationModalOpen(false);
 
       // Show success toast
-      const successMsg = "Application submitted successfully! We'll get back to you soon.";
       toast({
         title: "Application Submitted!",
-        description: successMsg,
+        description: "Your application has been submitted successfully. We'll review it and get back to you soon.",
         variant: "default",
       });
     } catch (error) {
       console.error("Error submitting application:", error);
-      const errorMsg = "There was an error submitting your application. Please try again.";
       toast({
         title: "Submission Failed",
-        description: errorMsg,
+        description: error instanceof Error ? error.message : "There was an error submitting your application. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -493,7 +504,10 @@ const Careers = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white/30 text-white bg-transparent hover:bg-white hover:text-brand-navy px-8 py-3 text-lg font-semibold backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1">
+                className="border-white/30 text-white bg-transparent hover:bg-white hover:text-brand-navy px-8 py-3 text-lg font-semibold backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1"
+                onClick={() =>
+                  document.getElementById("company-culture")?.scrollIntoView({ behavior: "smooth" })
+                }>
                 Learn About Culture
               </Button>
             </div>
@@ -531,7 +545,7 @@ const Careers = () => {
       </section>
 
       {/* Company Culture Section - Dark */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-brand-navy/80 to-gray-900 text-white">
+      <section id="company-culture" className="py-20 bg-gradient-to-br from-gray-900 via-brand-navy/80 to-gray-900 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-teal/20 text-brand-teal px-4 py-2 rounded-full mb-6 border border-brand-teal/30">
@@ -661,8 +675,8 @@ const Careers = () => {
                       {job.type}
                     </Badge>
                   </div>
-                  <CardDescription className="text-gray-600">
-                    <div className="flex items-center space-x-4 text-sm">
+                  <CardDescription>
+                    <div className="flex items-center space-x-4 text-sm text-gray-600">
                       <span className="flex items-center space-x-1">
                         <Briefcase className="h-4 w-4" />
                         <span>{job.department}</span>
@@ -702,11 +716,26 @@ const Careers = () => {
           </div>
 
           {openPositions.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-600 text-lg">
-                No open positions at the moment. Check back later or send us your resume for future
-                opportunities!
+            <div className="text-center py-16">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-teal/10 rounded-full mb-6">
+                <Briefcase className="h-10 w-10 text-brand-teal" />
+              </div>
+              <h3 className="text-2xl font-bold text-brand-navy mb-4">
+                No Open Positions at the Moment
+              </h3>
+              <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+                We don't have any active job openings right now, but we're always looking for talented individuals to join our team.
               </p>
+              <a
+                href="mailto:careers@dexterztechnologies.com?subject=Job%20Application&body=Hello%20Dexterz%20Technologies."
+                className="inline-block">
+                <Button
+                  size="lg"
+                  className="bg-brand-teal hover:bg-brand-teal/90 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <Mail className="h-5 w-5 mr-2" />
+                  Send Us Your Resume
+                </Button>
+              </a>
             </div>
           )}
         </div>
@@ -886,7 +915,6 @@ const Careers = () => {
                     <Input
                       id="cv"
                       type="file"
-                      required
                       accept=".pdf,.doc,.docx"
                       onChange={handleFileChange}
                       className="hidden"
@@ -906,6 +934,9 @@ const Careers = () => {
                         className="mt-2 text-brand-teal font-semibold hover:underline">
                         Browse Files
                       </button>
+                      <p className="text-xs text-gray-500 mt-2">
+                        PDF, DOC, DOCX (Max 5 MB)
+                      </p>
                     </div>
                   </div>
                 ) : (
