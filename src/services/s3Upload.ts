@@ -29,13 +29,6 @@ export const uploadFileToS3 = async (
     const sanitizedFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
     const fileName = `${folder}/${timestamp}_${sanitizedFileName}`;
 
-    console.log('Uploading to S3:', {
-      bucket: bucketName,
-      fileName,
-      fileSize: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
-      fileType: file.type,
-    });
-
     // Convert File to ArrayBuffer
     const arrayBuffer = await file.arrayBuffer();
     const buffer = new Uint8Array(arrayBuffer);
@@ -55,15 +48,9 @@ export const uploadFileToS3 = async (
     // Generate public URL
     const publicUrl = `https://${bucketName}.s3.${AWS_S3_CONFIG.REGION}.amazonaws.com/${fileName}`;
 
-    console.log('S3 upload successful:', {
-      url: publicUrl,
-      key: fileName,
-    });
-
     // Return the public URL
     return publicUrl;
   } catch (error) {
-    console.error('S3 upload error:', error);
     throw new Error(`Failed to upload file to S3: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 };
@@ -88,10 +75,8 @@ export const deleteFileFromS3 = async (fileUrl: string): Promise<boolean> => {
     });
 
     await s3Client.send(command);
-    console.log('S3 file deleted successfully:', key);
     return true;
   } catch (error) {
-    console.error('S3 deletion error:', error);
     return false;
   }
 };
@@ -117,7 +102,6 @@ export const generatePresignedUrl = async (
     const url = await getSignedUrl(s3Client, command, { expiresIn });
     return url;
   } catch (error) {
-    console.error('Error generating pre-signed URL:', error);
     throw new Error('Failed to generate download link');
   }
 };

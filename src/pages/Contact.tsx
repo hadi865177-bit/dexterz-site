@@ -367,6 +367,8 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="Your name"
                           required
+                          onInvalid={(e) => (e.target as HTMLInputElement).setCustomValidity('This field is required.')}
+                          onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                           className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-brand-teal"
                         />
                       </div>
@@ -383,6 +385,8 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="your.email@example.com"
                           required
+                          onInvalid={(e) => (e.target as HTMLInputElement).setCustomValidity('This field is required.')}
+                          onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                           className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-brand-teal"
                         />
                       </div>
@@ -431,6 +435,8 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="How can we help?"
                           required
+                          onInvalid={(e) => (e.target as HTMLInputElement).setCustomValidity('This field is required.')}
+                          onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                           className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-brand-teal"
                         />
                       </div>
@@ -467,6 +473,8 @@ const Contact = () => {
                         placeholder="Please tell us how we can help you..."
                         rows={5}
                         required
+                        onInvalid={(e) => (e.target as HTMLTextAreaElement).setCustomValidity('This field is required.')}
+                        onInput={(e) => (e.target as HTMLTextAreaElement).setCustomValidity('')}
                         className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-brand-teal resize-none"
                       />
                     </div>
