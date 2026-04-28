@@ -266,13 +266,25 @@ const BlogDetail = () => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.5 }}>
-                    <h4 className="font-semibold text-brand-navy mb-4">Actions</h4>
+                    <h4 className="font-semibold text-brand-navy mb-4">Share Article</h4>
                     <div className="space-y-3">
                       <button
                         onClick={() => handleShare("twitter")}
-                        className="w-full flex items-center justify-center px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 hover:border-brand-teal hover:text-brand-teal hover:bg-brand-teal/5 transition-all duration-200 hover:scale-105">
-                        <Share2 size={16} className="mr-2" />
-                        Share
+                        className="w-full flex items-center justify-center px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 hover:border-[#1DA1F2] hover:text-[#1DA1F2] hover:bg-[#1DA1F2]/5 transition-all duration-200 hover:scale-105">
+                        <Twitter size={16} className="mr-2" />
+                        Twitter
+                      </button>
+                      <button
+                        onClick={() => handleShare("linkedin")}
+                        className="w-full flex items-center justify-center px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/5 transition-all duration-200 hover:scale-105">
+                        <Linkedin size={16} className="mr-2" />
+                        LinkedIn
+                      </button>
+                      <button
+                        onClick={() => handleShare("facebook")}
+                        className="w-full flex items-center justify-center px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 hover:border-[#1877F2] hover:text-[#1877F2] hover:bg-[#1877F2]/5 transition-all duration-200 hover:scale-105">
+                        <Facebook size={16} className="mr-2" />
+                        Facebook
                       </button>
                     </div>
                   </motion.div>

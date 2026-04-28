@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogsList } from "../../data/blogs";
+import { useState, useEffect } from "react";
+import { supabase, Blog } from "@/lib/supabase";
+import { generateSlug } from "@/utils/slugify";
 
 interface InsightCard {
   id: string;
@@ -11,18 +14,60 @@ interface InsightCard {
   link: string;
 }
 
-// Get the 5 most recent blogs
-const recentBlogs = BlogsList.slice(0, 5);
-
-const insights: InsightCard[] = recentBlogs.map((blog) => ({
-  id: blog.id,
-  type: "Blogs" as const,
-  title: blog.title,
-  image: blog.image,
-  link: `/blog/${blog.id}`,
-}));
-
 const FeaturedInsightsSection = () => {
+  const [insights, setInsights] = useState<InsightCard[]>([]);
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const fetchBlogs = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('blogs')
+        .select('*')
+        .order('publish_date', { ascending: false })
+        .limit(5);
+
+      if (error) throw error;
+      
+      if (data && data.length > 0) {
+        const formattedInsights = data.map(blog => ({
+          id: blog.id,
+          type: "Blogs" as const,
+          title: blog.title,
+          image: blog.image,
+          link: `/${generateSlug(blog.title)}`,
+        }));
+        setInsights(formattedInsights);
+      } else {
+        const recentBlogs = BlogsList.slice(0, 5);
+        const staticInsights = recentBlogs.map((blog) => ({
+          id: blog.id,
+          type: "Blogs" as const,
+          title: blog.title,
+          image: blog.image,
+          link: `/blog/${blog.id}`,
+        }));
+        setInsights(staticInsights);
+      }
+    } catch (error) {
+      const recentBlogs = BlogsList.slice(0, 5);
+      const staticInsights = recentBlogs.map((blog) => ({
+        id: blog.id,
+        type: "Blogs" as const,
+        title: blog.title,
+        image: blog.image,
+        link: `/blog/${blog.id}`,
+      }));
+      setInsights(staticInsights);
+    }
+  };
+
+  if (insights.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-20 bg-white relative overflow-hidden">
       {/* Background gradient for right side */}
