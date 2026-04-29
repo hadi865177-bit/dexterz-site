@@ -38,7 +38,6 @@ const Navbar = () => {
     { name: "Services", path: "/services" },
     { name: "Blog", path: "/blogs" },
     { name: "Careers", path: "/careers" },
-    { name: "Contact", path: "/contact" },
   ];
 
   return (
@@ -64,22 +63,28 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`font-medium transition-colors ${
-                location.pathname === link.path
-                  ? "text-brand-teal font-semibold"
-                  : "text-gray-700 hover:text-brand-teal"
-              }`}>
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = link.path === "/services" 
+              ? location.pathname.startsWith("/services")
+              : location.pathname === link.path;
+            
+            return (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`font-medium transition-colors ${
+                  isActive
+                    ? "text-brand-teal font-semibold"
+                    : "text-gray-700 hover:text-brand-teal"
+                }`}>
+                {link.name}
+              </Link>
+            );
+          })}
           <Button
             className="bg-brand-teal hover:bg-brand-teal/90 text-white"
             onClick={handleGetInTouch}>
-            Get in Touch
+            Contact Us
           </Button>
         </div>
 
@@ -95,26 +100,32 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`font-medium transition-colors py-2 border-b border-gray-100 ${
-                  location.pathname === link.path
-                    ? "text-brand-teal font-semibold"
-                    : "text-gray-700 hover:text-brand-teal"
-                }`}
-                onClick={() => setIsMenuOpen(false)}>
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.path === "/services" 
+                ? location.pathname.startsWith("/services")
+                : location.pathname === link.path;
+              
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`font-medium transition-colors py-2 border-b border-gray-100 ${
+                    isActive
+                      ? "text-brand-teal font-semibold"
+                      : "text-gray-700 hover:text-brand-teal"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}>
+                  {link.name}
+                </Link>
+              );
+            })}
             <Button
               className="bg-brand-teal hover:bg-brand-teal/90 text-white w-full"
               onClick={() => {
                 setIsMenuOpen(false);
                 handleGetInTouch();
               }}>
-              Get in Touch
+              Contact Us
             </Button>
           </div>
         </div>
