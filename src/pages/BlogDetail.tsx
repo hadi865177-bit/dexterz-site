@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import {
   ArrowLeft,
   Calendar,
@@ -110,6 +111,24 @@ const BlogDetail = () => {
 
   return (
     <PageLayout>
+      <Helmet>
+        <title>{blog.title} | Dexterz Technologies</title>
+        <meta name="description" content={blog.excerpt} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.excerpt} />
+        <meta property="og:image" content={blog.image} />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={window.location.href} />
+        <meta property="twitter:title" content={blog.title} />
+        <meta property="twitter:description" content={blog.excerpt} />
+        <meta property="twitter:image" content={blog.image} />
+      </Helmet>
       {/* Enhanced Hero Section */}
       <section className="bg-gradient-to-br from-brand-navy via-brand-navy/95 to-brand-navy/90 text-white py-24 relative overflow-hidden">
         {/* Background Pattern */}

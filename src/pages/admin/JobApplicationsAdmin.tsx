@@ -238,33 +238,38 @@ const JobApplicationsAdmin = () => {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Email</TableHead>
-                      <TableHead>Position</TableHead>
-                      <TableHead>CV</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Applied Date</TableHead>
-                      <TableHead>Actions</TableHead>
+                      <TableHead className="w-[15%] min-w-[120px]">Name</TableHead>
+                      <TableHead className="w-[15%] min-w-[120px]">Email</TableHead>
+                      <TableHead className="w-[12%] min-w-[100px]">Position</TableHead>
+                      <TableHead className="w-[10%] min-w-[80px]">CV</TableHead>
+                      <TableHead className="w-[10%] min-w-[90px]">Status</TableHead>
+                      <TableHead className="w-[12%] min-w-[100px]">Date</TableHead>
+                      <TableHead className="w-[26%] min-w-[200px]">Actions</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {filteredApplications.map((app) => (
                       <TableRow key={app.id}>
                         <TableCell className="font-medium">
-                          {app.name}
+                          <div className="truncate max-w-[150px]" title={app.name}>
+                            {app.name}
+                          </div>
                         </TableCell>
                         <TableCell>
                           <a
                             href={`mailto:${app.email}`}
-                            className="text-brand-teal hover:underline flex items-center gap-1">
-                            <Mail className="h-4 w-4" />
-                            {app.email}
+                            className="text-brand-teal hover:underline flex items-center gap-1"
+                            title={app.email}>
+                            <Mail className="h-4 w-4 flex-shrink-0" />
+                            <span className="truncate max-w-[120px]">{app.email}</span>
                           </a>
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center gap-1">
-                            <Briefcase className="h-4 w-4 text-gray-500" />
-                            {app.job_position}
+                            <Briefcase className="h-4 w-4 text-gray-500 flex-shrink-0" />
+                            <span className="truncate max-w-[100px]" title={app.job_position}>
+                              {app.job_position}
+                            </span>
                           </div>
                         </TableCell>
                         <TableCell>
@@ -272,14 +277,9 @@ const JobApplicationsAdmin = () => {
                             href={app.cv_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-brand-teal hover:underline flex items-center gap-1">
+                            className="text-brand-teal hover:underline"
+                            title={`${app.cv_filename} (${app.cv_size})`}>
                             <Download className="h-4 w-4" />
-                            <div>
-                              <div className="text-sm">{app.cv_filename}</div>
-                              <div className="text-xs text-gray-500">
-                                {app.cv_size}
-                              </div>
-                            </div>
                           </a>
                         </TableCell>
                         <TableCell>
@@ -289,8 +289,10 @@ const JobApplicationsAdmin = () => {
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center gap-1 text-sm text-gray-600">
-                            <Calendar className="h-4 w-4" />
-                            {new Date(app.created_at!).toLocaleDateString()}
+                            <Calendar className="h-4 w-4 flex-shrink-0" />
+                            <span className="whitespace-nowrap">
+                              {new Date(app.created_at!).toLocaleDateString()}
+                            </span>
                           </div>
                         </TableCell>
                         <TableCell>
@@ -316,7 +318,7 @@ const JobApplicationsAdmin = () => {
                               variant="outline"
                               size="icon"
                               onClick={() => deleteApplication(app.id, app.name)}
-                              className="text-red-600 hover:bg-red-50 hover:text-red-700 border-red-200">
+                              className="text-red-600 hover:bg-red-50 hover:text-red-700 border-red-200 flex-shrink-0">
                               <Trash2 className="h-4 w-4" />
                             </Button>
                           </div>
