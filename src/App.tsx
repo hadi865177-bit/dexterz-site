@@ -18,6 +18,7 @@ import SoftwareDevelopment from "./pages/SoftwareDevelopment";
 import MobileDevelopment from "./pages/MobileDevelopment";
 import CloudSolutions from "./pages/CloudSolutions";
 import Consultation from "./pages/Consultation";
+import DataEngineering from "./pages/DataEngineering";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
 import Careers from "./pages/Careers";
@@ -57,6 +58,7 @@ const App = () => (
             <Route path="/services/ai/data-processing" element={<IntelligentDataProcessing />} />
             <Route path="/services/staff-augmentation" element={<StaffAugmentation />} />
             <Route path="/services/development" element={<SoftwareDevelopment />} />
+            <Route path="/services/data-engineering" element={<DataEngineering />} />
             <Route path="/services/mobile" element={<MobileDevelopment />} />
             <Route path="/services/cloud" element={<CloudSolutions />} />
             <Route path="/services/consultation" element={<Consultation />} />

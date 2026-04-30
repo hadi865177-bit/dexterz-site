@@ -23,6 +23,32 @@ const technologies = [
     icon: "https://res.cloudinary.com/diqz9omkm/image/upload/v1753321377/pinecone-logo-png_seeklogo-482364_bp9dec.png",
   },
 
+  // Data Engineering
+  {
+    name: "Apache Spark",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg",
+  },
+  {
+    name: "Apache Airflow",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/d/de/AirflowLogo.png",
+  },
+  {
+    name: "Apache Kafka",
+    icon: "https://cdn.worldvectorlogo.com/logos/kafka.svg",
+  },
+  {
+    name: "Snowflake",
+    icon: "https://companieslogo.com/img/orig/SNOW-35164165.png",
+  },
+  {
+    name: "Databricks",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/6/63/Databricks_Logo.png",
+  },
+  {
+    name: "dbt",
+    icon: "https://seeklogo.com/images/D/dbt-logo-500AB0BAA7-seeklogo.com.png",
+  },
+
   // Full Stack - Backend
   {
     name: "Django",

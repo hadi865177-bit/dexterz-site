@@ -11,13 +11,14 @@ import {
 } from "lucide-react";
 import ServiceCard from "../services/ServiceCard";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const DevelopmentServiceSection = () => {
   const devServices = [
     {
-      title: "Full Stack Development",
+      title: "Full Stack & Custom Software",
       description:
-        "Building robust, end-to-end web and mobile applications using modern frameworks and mission-critical reliability standards.",
+        "Building robust, end-to-end applications and architecting bespoke software solutions using modern frameworks and mission-critical reliability standards.",
       icon: <Globe />,
       link: "/services/development",
     },
@@ -36,6 +37,13 @@ const DevelopmentServiceSection = () => {
       link: "/services/ai",
     },
     {
+      title: "Data Engineering",
+      description:
+        "Designing and building scalable data pipelines, warehouses, and ETL processes for enterprise-grade data infrastructure.",
+      icon: <Code />,
+      link: "/services/data-engineering",
+    },
+    {
       title: "DevOps & Cloud Engineering",
       description:
         "Automating CI/CD pipelines and managing high-availability cloud infrastructure for seamless global scaling.",
@@ -49,24 +57,17 @@ const DevelopmentServiceSection = () => {
       icon: <Building2 />,
       link: "/services/consultation",
     },
-    {
-      title: "Custom Software Engineering",
-      description:
-        "Architecting bespoke software solutions tailored to solve complex operational challenges and drive innovation.",
-      icon: <Code />,
-      link: "/services/development",
-    },
   ];
 
   return (
     <section className="py-20 bg-white relative text-gray-900">
       {/* Animated Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         {/* Grid pattern overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center space-x-2 bg-brand-teal/10 text-brand-teal px-4 py-2 rounded-full mb-6 border border-brand-teal/20">
             <CodeIcon className="h-4 w-4" />
@@ -95,8 +96,8 @@ const DevelopmentServiceSection = () => {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 leading-relaxed mb-4">{service.description}</p>
-                <a
-                  href={service.link}
+                <Link
+                  to={service.link}
                   className="inline-flex items-center text-brand-teal hover:text-brand-teal/80 font-medium transition-colors">
                   Learn More
                   <svg
@@ -111,7 +112,7 @@ const DevelopmentServiceSection = () => {
                       d="M9 5l7 7-7 7"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}
