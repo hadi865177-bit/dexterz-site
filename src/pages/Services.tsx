@@ -328,13 +328,13 @@ const Services = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center bg-brand-teal hover:bg-brand-teal/90 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                className="group inline-flex items-center justify-center bg-brand-teal hover:bg-brand-teal/90 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 min-w-[200px]">
+                Start Your Project <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/about"
-                className="inline-flex items-center border-white/30 text-white bg-transparent hover:bg-white hover:text-brand-navy px-8 py-3 text-lg font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1">
-                Learn More
+                className="group inline-flex items-center justify-center border-2 border-white/30 text-white bg-transparent hover:bg-white hover:text-brand-navy px-8 py-3 text-lg font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 min-w-[200px]">
+                Explore Services <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
           </div>
@@ -838,13 +838,15 @@ const Services = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center px-8 py-4 bg-brand-teal hover:bg-brand-teal/90 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                className="group inline-flex items-center px-8 py-4 bg-brand-teal hover:bg-brand-teal/90 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 relative overflow-hidden">
+                <span className="relative z-10">Schedule Consultation</span>
+                <ArrowRight className="ml-2 h-5 w-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-teal to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
               <Link
                 to="/about"
-                className="inline-flex items-center px-8 py-4 border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white font-semibold rounded-lg transition-all duration-300 transform hover:-translate-y-1">
-                Learn More
+                className="group inline-flex items-center px-8 py-4 border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white font-semibold rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                View Case Studies <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </motion.div>
