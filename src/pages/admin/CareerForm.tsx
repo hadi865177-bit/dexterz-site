@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import { useNavigate, useParams } from 'react-router-dom';
 import AdminLayout from '@/components/layout/AdminLayout';
 import { supabase } from '@/lib/supabase';
@@ -56,7 +57,7 @@ const CareerForm = () => {
       }
     } catch (error) {
       console.error('Error fetching career:', error);
-      alert('Failed to load career');
+      toast.error('Failed to load career details');
     }
   };
 
@@ -86,10 +87,11 @@ const CareerForm = () => {
       // Invalidate cache by triggering a storage event
       window.dispatchEvent(new Event('storage'));
       
+      toast.success(isEdit ? 'Career updated successfully' : 'Career created successfully');
       navigate('/admin/careers');
     } catch (error) {
       console.error('Error saving career:', error);
-      alert('Failed to save career');
+      toast.error('Failed to save career');
     } finally {
       setLoading(false);
     }

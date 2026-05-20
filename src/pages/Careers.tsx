@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { uploadFileToSupabase } from "@/services/fileUpload";
 import { useToast } from "@/hooks/use-toast";
 import PageLayout from "@/components/layout/PageLayout";
@@ -37,9 +38,12 @@ import {
   Upload,
   User,
   Mail,
+  Share2,
+  Link as LinkIcon,
 } from "lucide-react";
 import { supabase, Career } from "@/lib/supabase";
 import BrandedLoader from "@/components/ui/BrandedLoader";
+import { generateSlug } from "@/utils/slugify";
 
 interface JobPosition {
   id: string;
@@ -72,6 +76,8 @@ const Careers = () => {
   const [cvError, setCvError] = useState<string>("");
   const [jobPositions, setJobPositions] = useState<JobPosition[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchParams] = useSearchParams();
+  const jobIdParam = searchParams.get("job");
 
   const [applicationForm, setApplicationForm] = useState<ApplicationForm>({
     name: "",
@@ -219,6 +225,24 @@ const Careers = () => {
       setLoading(false);
     }
   };
+
+  // Handle deep linking for specific jobs
+  useEffect(() => {
+    if (!loading && jobIdParam && jobPositions.length > 0) {
+      // Find job by ID or by slugified title
+      const job = jobPositions.find(j => 
+        j.id === jobIdParam || generateSlug(j.title) === jobIdParam
+      );
+      if (job) {
+        setSelectedJob(job);
+        setIsModalOpen(true);
+        // Also scroll to open positions if not already there
+        setTimeout(() => {
+          document.getElementById("open-positions")?.scrollIntoView({ behavior: "smooth" });
+        }, 500);
+      }
+    }
+  }, [loading, jobIdParam, jobPositions]);
   
   const companyValues = [
     {
@@ -263,6 +287,18 @@ const Careers = () => {
     setApplicationForm((prev) => ({ ...prev, jobPosition: jobTitle }));
     setIsApplicationModalOpen(true);
     setIsModalOpen(false);
+  };
+
+  const handleShareJob = (job: JobPosition) => {
+    const baseUrl = window.location.origin;
+    const slug = generateSlug(job.title);
+    const link = `${baseUrl}/careers?job=${slug}`;
+    
+    navigator.clipboard.writeText(link);
+    toast({
+      title: "Link Copied!",
+      description: "Direct link to this job has been copied to your clipboard.",
+    });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -709,6 +745,14 @@ const Careers = () => {
                       <Send className="h-4 w-4 mr-2" />
                       Apply Now
                     </Button>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="border-gray-200 text-gray-500 hover:text-brand-teal hover:border-brand-teal transition-all duration-300"
+                      onClick={() => handleShareJob(job)}
+                      title="Share Job">
+                      <Share2 className="h-4 w-4" />
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -835,7 +879,14 @@ const Careers = () => {
                 Close
               </Button>
               <Button
-                className="flex-1 bg-brand-teal hover:bg-brand-teal/90 text-white"
+                variant="outline"
+                className="border-gray-200 text-gray-500 hover:text-brand-teal hover:border-brand-teal transition-all duration-300"
+                onClick={() => selectedJob && handleShareJob(selectedJob)}>
+                <Share2 className="h-4 w-4 mr-2" />
+                Share
+              </Button>
+              <Button
+                className="flex-[2] bg-brand-teal hover:bg-brand-teal/90 text-white"
                 onClick={() => selectedJob && handleApply(selectedJob.title)}>
                 <Send className="h-4 w-4 mr-2" />
                 Apply Now

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import AdminLayout from '@/components/layout/AdminLayout';
 import { supabase, Career } from '@/lib/supabase';
-import { Plus, Edit, Trash2, Search, Eye, EyeOff } from 'lucide-react';
+import { Plus, Edit, Trash2, Search, Eye, EyeOff, Link, Copy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BrandedLoader from '@/components/ui/BrandedLoader';
 import DeleteModal from '@/components/ui/DeleteModal';
+import { generateSlug } from '@/utils/slugify';
 
 const CareerManagement = () => {
   const [careers, setCareers] = useState<Career[]>([]);
@@ -46,10 +48,11 @@ const CareerManagement = () => {
       const { error } = await supabase.from('careers').delete().eq('id', careerToDelete);
       if (error) throw error;
       setCareers(careers.filter((career) => career.id !== careerToDelete));
+      toast.success('Job posting deleted successfully');
       setCareerToDelete(null);
     } catch (error) {
       console.error('Error deleting career:', error);
-      alert('Failed to delete career');
+      toast.error('Failed to delete career');
     }
   };
 
@@ -66,10 +69,19 @@ const CareerManagement = () => {
           career.id === id ? { ...career, is_active: !currentStatus } : career
         )
       );
+      toast.success(`Job ${!currentStatus ? 'activated' : 'deactivated'} successfully`);
     } catch (error) {
       console.error('Error updating career status:', error);
-      alert('Failed to update career status');
+      toast.error('Failed to update career status');
     }
+  };
+
+  const copyJobLink = (career: Career) => {
+    const baseUrl = window.location.origin;
+    const slug = generateSlug(career.title);
+    const link = `${baseUrl}/careers?job=${slug}`;
+    navigator.clipboard.writeText(link);
+    toast.success('Professional link copied to clipboard!');
   };
 
   const filteredCareers = careers.filter((career) =>
@@ -122,6 +134,7 @@ const CareerManagement = () => {
               <table className="w-full">
                 <thead className="bg-slate-50 border-b border-slate-200">
                   <tr>
+                    <th className="text-left py-4 px-6 font-bold text-slate-600 text-xs" style={{fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: '0.05em'}}>ID</th>
                     <th className="text-left py-4 px-6 font-bold text-slate-600 text-xs" style={{fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: '0.05em'}}>TITLE</th>
                     <th className="text-left py-4 px-6 font-bold text-slate-600 text-xs" style={{fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: '0.05em'}}>DEPARTMENT</th>
                     <th className="text-left py-4 px-6 font-bold text-slate-600 text-xs" style={{fontFamily: 'Inter, system-ui, sans-serif', letterSpacing: '0.05em'}}>LOCATION</th>
@@ -133,6 +146,11 @@ const CareerManagement = () => {
                 <tbody>
                   {filteredCareers.map((career) => (
                     <tr key={career.id} className="border-b border-slate-100 hover:bg-slate-50 transition-all duration-200">
+                      <td className="py-5 px-6">
+                        <span className="text-[10px] font-mono text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded" title={career.id}>
+                          {career.id.substring(0, 8)}...
+                        </span>
+                      </td>
                       <td className="py-5 px-6">
                         <div className="font-bold text-slate-900 text-sm" style={{fontFamily: 'Inter, system-ui, sans-serif'}}>{career.title}</div>
                         <div className="text-xs text-slate-500 mt-1" style={{fontFamily: 'Inter, system-ui, sans-serif'}}>{career.experience}</div>
@@ -159,6 +177,13 @@ const CareerManagement = () => {
                       </td>
                       <td className="py-5 px-6">
                         <div className="flex items-center justify-end space-x-2">
+                          <button
+                            onClick={() => copyJobLink(career)}
+                            className="p-2.5 text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200"
+                            title="Copy Direct Link"
+                          >
+                            <Link className="h-5 w-5" />
+                          </button>
                           <button
                             onClick={() => toggleActive(career.id, career.is_active)}
                             className="p-2.5 text-slate-600 hover:bg-slate-100 rounded-lg transition-all duration-200"

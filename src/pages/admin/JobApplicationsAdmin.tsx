@@ -4,6 +4,7 @@ import AdminLayout from "@/components/layout/AdminLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Table,
   TableBody,
@@ -28,7 +29,10 @@ const JobApplicationsAdmin = () => {
   const [applications, setApplications] = useState<JobApplication[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState<string>("all");
+  const [filterPosition, setFilterPosition] = useState<string>("all");
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [bulkDeleteModalOpen, setBulkDeleteModalOpen] = useState(false);
   const [applicationToDelete, setApplicationToDelete] = useState<{ id: string; name: string } | null>(null);
   const { toast } = useToast();
 
@@ -117,6 +121,93 @@ const JobApplicationsAdmin = () => {
     }
   };
 
+  const toggleSelectAll = () => {
+    if (selectedIds.length === filteredApplications.length) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(filteredApplications.map(app => app.id));
+    }
+  };
+
+  const toggleSelectOne = (id: string) => {
+    setSelectedIds(prev => 
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    );
+  };
+
+  const handleBulkDelete = () => {
+    if (selectedIds.length === 0) {
+      toast({
+        title: "No Selection",
+        description: "Please select applications to delete",
+        variant: "destructive",
+      });
+      return;
+    }
+    setBulkDeleteModalOpen(true);
+  };
+
+  const confirmBulkDelete = async () => {
+    try {
+      const { error } = await supabase
+        .from("job_applications")
+        .delete()
+        .in("id", selectedIds);
+
+      if (error) throw error;
+
+      toast({
+        title: "Applications Deleted",
+        description: `${selectedIds.length} application(s) deleted successfully`,
+      });
+
+      setSelectedIds([]);
+      fetchApplications();
+    } catch (error) {
+      console.error("Error deleting applications:", error);
+      toast({
+        title: "Error",
+        description: "Failed to delete applications",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleBulkStatusChange = async (newStatus: string) => {
+    if (selectedIds.length === 0) {
+      toast({
+        title: "No Selection",
+        description: "Please select applications to update",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from("job_applications")
+        .update({ status: newStatus, updated_at: new Date().toISOString() })
+        .in("id", selectedIds);
+
+      if (error) throw error;
+
+      toast({
+        title: "Status Updated",
+        description: `${selectedIds.length} application(s) updated to ${newStatus}`,
+      });
+
+      setSelectedIds([]);
+      fetchApplications();
+    } catch (error) {
+      console.error("Error updating status:", error);
+      toast({
+        title: "Error",
+        description: "Failed to update status",
+        variant: "destructive",
+      });
+    }
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case "pending":
@@ -132,9 +223,13 @@ const JobApplicationsAdmin = () => {
     }
   };
 
-  const filteredApplications = applications.filter((app) =>
-    filterStatus === "all" ? true : app.status === filterStatus
-  );
+  const uniquePositions = Array.from(new Set(applications.map(app => app.job_position)));
+
+  const filteredApplications = applications.filter((app) => {
+    const statusMatch = filterStatus === "all" || app.status === filterStatus;
+    const positionMatch = filterPosition === "all" || app.job_position === filterPosition;
+    return statusMatch && positionMatch;
+  });
 
   const stats = {
     total: applications.length,
@@ -209,23 +304,65 @@ const JobApplicationsAdmin = () => {
           </Card>
         </div>
 
-        {/* Filter */}
+        {/* Filters and Bulk Actions */}
         <Card className="mb-6">
           <CardHeader>
-            <div className="flex justify-between items-center">
-              <CardTitle>Applications List</CardTitle>
-              <Select value={filterStatus} onValueChange={setFilterStatus}>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Filter by status" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Status</SelectItem>
-                  <SelectItem value="pending">Pending</SelectItem>
-                  <SelectItem value="reviewed">Reviewed</SelectItem>
-                  <SelectItem value="shortlisted">Shortlisted</SelectItem>
-                  <SelectItem value="rejected">Rejected</SelectItem>
-                </SelectContent>
-              </Select>
+            <div className="flex flex-col gap-4">
+              <div className="flex justify-between items-center">
+                <CardTitle>Applications List</CardTitle>
+                <div className="flex gap-2">
+                  <Select value={filterPosition} onValueChange={setFilterPosition}>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Filter by position" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Positions</SelectItem>
+                      {uniquePositions.map(position => (
+                        <SelectItem key={position} value={position}>{position}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <Select value={filterStatus} onValueChange={setFilterStatus}>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Filter by status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Status</SelectItem>
+                      <SelectItem value="pending">Pending</SelectItem>
+                      <SelectItem value="reviewed">Reviewed</SelectItem>
+                      <SelectItem value="shortlisted">Shortlisted</SelectItem>
+                      <SelectItem value="rejected">Rejected</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              {selectedIds.length > 0 && (
+                <div className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <span className="text-sm font-medium text-blue-900">
+                    {selectedIds.length} selected
+                  </span>
+                  <div className="flex gap-2 ml-auto">
+                    <Select onValueChange={handleBulkStatusChange}>
+                      <SelectTrigger className="w-[160px] bg-white">
+                        <SelectValue placeholder="Change Status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="pending">Set to Pending</SelectItem>
+                        <SelectItem value="reviewed">Set to Reviewed</SelectItem>
+                        <SelectItem value="shortlisted">Set to Shortlisted</SelectItem>
+                        <SelectItem value="rejected">Set to Rejected</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      onClick={handleBulkDelete}>
+                      <Trash2 className="h-4 w-4 mr-2" />
+                      Delete Selected
+                    </Button>
+                  </div>
+                </div>
+              )}
             </div>
           </CardHeader>
           <CardContent>
@@ -238,6 +375,12 @@ const JobApplicationsAdmin = () => {
                 <Table>
                   <TableHeader>
                     <TableRow>
+                      <TableHead className="w-[50px]">
+                        <Checkbox
+                          checked={selectedIds.length === filteredApplications.length && filteredApplications.length > 0}
+                          onCheckedChange={toggleSelectAll}
+                        />
+                      </TableHead>
                       <TableHead className="w-[15%] min-w-[120px]">Name</TableHead>
                       <TableHead className="w-[15%] min-w-[120px]">Email</TableHead>
                       <TableHead className="w-[12%] min-w-[100px]">Position</TableHead>
@@ -250,6 +393,12 @@ const JobApplicationsAdmin = () => {
                   <TableBody>
                     {filteredApplications.map((app) => (
                       <TableRow key={app.id}>
+                        <TableCell>
+                          <Checkbox
+                            checked={selectedIds.includes(app.id)}
+                            onCheckedChange={() => toggleSelectOne(app.id)}
+                          />
+                        </TableCell>
                         <TableCell className="font-medium">
                           <div className="truncate max-w-[150px]" title={app.name}>
                             {app.name}
@@ -339,6 +488,14 @@ const JobApplicationsAdmin = () => {
         onConfirm={confirmDelete}
         title="Delete Application"
         message={`Are you sure you want to delete the application from ${applicationToDelete?.name}? This action cannot be undone.`}
+      />
+
+      <DeleteModal
+        isOpen={bulkDeleteModalOpen}
+        onClose={() => setBulkDeleteModalOpen(false)}
+        onConfirm={confirmBulkDelete}
+        title="Delete Multiple Applications"
+        message={`Are you sure you want to delete ${selectedIds.length} application(s)? This action cannot be undone.`}
       />
     </AdminLayout>
   );

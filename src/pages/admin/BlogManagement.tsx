@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import AdminLayout from '@/components/layout/AdminLayout';
 import { supabase, Blog } from '@/lib/supabase';
 import { Plus, Edit, Trash2, Search } from 'lucide-react';
@@ -46,10 +47,11 @@ const BlogManagement = () => {
       const { error } = await supabase.from('blogs').delete().eq('id', blogToDelete);
       if (error) throw error;
       setBlogs(blogs.filter((blog) => blog.id !== blogToDelete));
+      toast.success('Blog post deleted successfully');
       setBlogToDelete(null);
     } catch (error) {
       console.error('Error deleting blog:', error);
-      alert('Failed to delete blog');
+      toast.error('Failed to delete blog');
     }
   };
 

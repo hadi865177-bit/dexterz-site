@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import { useNavigate, useParams } from 'react-router-dom';
 import AdminLayout from '@/components/layout/AdminLayout';
 import { supabase, Blog } from '@/lib/supabase';
@@ -59,7 +60,7 @@ const BlogForm = () => {
       }
     } catch (error) {
       console.error('Error fetching blog:', error);
-      alert('Failed to load blog');
+      toast.error('Failed to load blog details');
     }
   };
 
@@ -68,7 +69,7 @@ const BlogForm = () => {
     if (!file) return;
 
     if (!file.type.startsWith('image/')) {
-      alert('Please select an image file');
+      toast.error('Please select a valid image file');
       return;
     }
 
@@ -114,7 +115,7 @@ const BlogForm = () => {
       }
 
       if (!imageUrl) {
-        alert('Please provide an image');
+        toast.error('Please provide an image for the blog');
         setLoading(false);
         return;
       }
@@ -139,10 +140,11 @@ const BlogForm = () => {
       // Invalidate cache by triggering a storage event
       window.dispatchEvent(new Event('storage'));
       
+      toast.success(isEdit ? 'Blog post updated successfully' : 'Blog post created successfully');
       navigate('/admin/blogs');
     } catch (error) {
       console.error('Error saving blog:', error);
-      alert('Failed to save blog');
+      toast.error('Failed to save blog');
     } finally {
       setLoading(false);
       setUploading(false);
